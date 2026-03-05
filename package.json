@@ -1,0 +1,21 @@
+{
+  "name": "zenithai_react-typescript-frontend",
+  "version": "1.0.0",
+  "description": "Not availible from now",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavFilsDev/zenithAI_react-typescript-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DavFilsDev/zenithAI_react-typescript-frontend/issues"
+  },
+  "homepage": "https://github.com/DavFilsDev/zenithAI_react-typescript-frontend#readme"
+}
