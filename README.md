@@ -2,8 +2,6 @@
 
 ## zenithAI Platform - Frontend (React + TypeScript)
 
-**Author:** RATIANDRAIBE
-
 ### 🎉 Live Demo
 
 Not availible from now
@@ -123,24 +121,6 @@ pnpm install
 - **Code Highlighting**: Prism.js
 - **WebSocket**: Native WebSocket API
 
-### 🔐 Authentication Flow
-
-```typescript
-// Example login implementation
-import { authService } from './services/auth';
-
-const login = async (email: string, password: string) => {
-  try {
-    const tokens = await authService.login(email, password);
-    localStorage.setItem('access_token', tokens.access);
-    localStorage.setItem('refresh_token', tokens.refresh);
-    // Redirect to chat
-  } catch (error) {
-    // Handle error
-  }
-};
-```
-
 ### 📱 Pages
 
 1. **Login/Register** - Authentication pages
@@ -149,31 +129,6 @@ const login = async (email: string, password: string) => {
 4. **Settings** - User preferences
 5. **Profile** - User profile management
 
-### 🎯 Component Examples
-
-```tsx
-// ChatMessage.tsx
-import React from 'react';
-import { Message } from '../types/chat';
-import { formatTime } from '../utils/date';
-
-interface ChatMessageProps {
-  message: Message;
-}
-
-const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
-  return (
-    <div className={`message ${message.role}`}>
-      <div className="message-content">
-        <Markdown>{message.content}</Markdown>
-      </div>
-      <div className="message-time">
-        {formatTime(message.created_at)}
-      </div>
-    </div>
-  );
-};
-```
 
 ### 🧪 Testing
 
@@ -234,23 +189,6 @@ npm run build
 npx serve dist
 ```
 
-### 🎨 Theming
-
-The app supports light/dark themes:
-```tsx
-import { useTheme } from '../contexts/ThemeContext';
-
-const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
-  
-  return (
-    <button onClick={toggleTheme}>
-      Switch to {theme === 'dark' ? 'light' : 'dark'} mode
-    </button>
-  );
-};
-```
-
 ### 🔧 Development Guidelines
 
 1. **Code Style**:
@@ -302,7 +240,6 @@ MIT License - see LICENSE file for details
 ---
 
 **Author:** Fanampinirina Miharisoa David Fils RATIANDRAIBE 
-**Last Updated:** 2025, july 19th
 
 ---
 
@@ -322,9 +259,3 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
 # Frontend (.env.local)
 VITE_API_URL=http://localhost:8000/api
 ```
-
-### Testing the Integration:
-1. Register a new user at `/register`
-2. Login with credentials
-3. Start a new conversation
-4. Send messages and receive responses
