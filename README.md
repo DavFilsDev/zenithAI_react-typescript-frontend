@@ -1,261 +1,73 @@
-# Frontend Repository README
+# React + TypeScript + Vite
 
-## zenithAI Platform - Frontend (React + TypeScript)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### 🎉 Live Demo
+Currently, two official plugins are available:
 
-Not availible from now
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### 🚀 Quick Start
+## React Compiler
 
-```bash
-# Clone the repository
-git clone https://github.com/DavFilsDev/zenithAI_react-typescript-frontend.git
-cd zenithAI_react-typescript-frontend
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-# Install dependencies
-npm install
-# or
-yarn install
-# or
-pnpm install
+## Expanding the ESLint configuration
 
-# Set up environment variables
-cp .env.example .env.local
-# Edit .env.local with your backend URL
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-# Start development server
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-### 📋 Prerequisites
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-- Node.js 18+ or 20+
-- npm, yarn, or pnpm
-- Backend API running (see backend repository)
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-### 🏗️ Project Structure
-
-```
-zenithAI_react-typescript-frontend/
-├── public/              # Static files
-├── src/
-│   ├── components/      # Reusable components
-│   │   ├── ui/         # UI components (Button, Input, etc.)
-│   │   ├── chat/       # Chat-specific components
-│   │   └── layout/     # Layout components
-│   ├── contexts/       # React contexts (Auth, Theme, etc.)
-│   ├── hooks/          # Custom React hooks
-│   ├── services/       # API services
-│   ├── types/          # TypeScript types
-│   ├── utils/          # Utility functions
-│   ├── pages/          # Page components
-│   ├── styles/         # Global styles
-│   └── App.tsx         # Main App component
-├── .env.example        # Environment variables template
-├── package.json        # Dependencies and scripts
-├── tsconfig.json       # TypeScript configuration
-└── vite.config.ts      # Vite configuration
-```
-
-### 🔧 Configuration
-
-1. **Environment Variables** (`/.env.local`):
-```env
-VITE_API_URL=http://localhost:8000/api
-VITE_WS_URL=ws://localhost:8000/ws
-VITE_APP_NAME=ChatGPT Clone
-VITE_DEFAULT_THEME=dark
-```
-
-### 📦 Installation
-
-```bash
-# Using npm
-npm install
-
-# Using yarn
-yarn install
-
-# Using pnpm
-pnpm install
-```
-
-### 🛠️ Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run type-check` - Check TypeScript types
-- `npm run format` - Format code with Prettier
-
-### 🎨 Features
-
-- **Modern UI/UX**: Clean, responsive interface
-- **Real-time Chat**: WebSocket support
-- **Dark/Light Mode**: Theme switching
-- **JWT Authentication**: Secure login system
-- **Markdown Support**: Render code and formatted text
-- **Conversation History**: Save and load previous chats
-- **Responsive Design**: Mobile-first approach
-- **Type Safety**: Full TypeScript support
-
-### 📚 Tech Stack
-
-- **Framework**: React 18
-- **Language**: TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS + CSS Modules
-- **State Management**: React Context + Zustand
-- **HTTP Client**: Axios
-- **Routing**: React Router DOM
-- **Forms**: React Hook Form
-- **Notifications**: React Hot Toast
-- **Icons**: React Icons
-- **Markdown**: React Markdown
-- **Code Highlighting**: Prism.js
-- **WebSocket**: Native WebSocket API
-
-### 📱 Pages
-
-1. **Login/Register** - Authentication pages
-2. **Chat Dashboard** - Main chat interface
-3. **Conversation List** - History sidebar
-4. **Settings** - User preferences
-5. **Profile** - User profile management
-
-
-### 🧪 Testing
-
-```bash
-# Run unit tests
-npm run test
-
-# Run tests with coverage
-npm run test:coverage
-
-# Run E2E tests
-npm run test:e2e
-```
-
-### 🚀 Deployment
-
-#### Free Hosting Options:
-
-1. **Vercel** (Recommended)
-   ```bash
-   # Install Vercel CLI
-   npm i -g vercel
-   
-   # Deploy
-   vercel
-   ```
-
-2. **Netlify**
-   ```bash
-   # Install Netlify CLI
-   npm i -g netlify-cli
-   
-   # Deploy
-   netlify deploy --prod
-   ```
-
-3. **GitHub Pages**
-   ```bash
-   # Build and deploy
-   npm run build
-   npm run deploy
-   ```
-
-#### Environment Variables for Production:
-```env
-VITE_API_URL=https://your-backend.railway.app/api
-VITE_WS_URL=wss://your-backend.railway.app/ws
-```
-
-### 📦 Build for Production
-
-```bash
-# Create production build
-npm run build
-
-# The build output will be in /dist folder
-# You can serve it with:
-npx serve dist
-```
-
-### 🔧 Development Guidelines
-
-1. **Code Style**:
-   - Use TypeScript strict mode
-   - Follow ESLint rules
-   - Use Prettier formatting
-
-2. **Component Structure**:
-   - One component per file
-   - Use functional components with hooks
-   - Prop types with TypeScript interfaces
-
-3. **State Management**:
-   - Local state: `useState`, `useReducer`
-   - Global state: Context API
-   - Server state: React Query
-
-### 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-### 🐛 Common Issues
-
-1. **CORS Errors**: Ensure backend CORS settings allow your frontend URL
-2. **WebSocket Issues**: Check WebSocket URL and backend WebSocket server
-3. **Build Errors**: Clear node_modules and reinstall: `rm -rf node_modules && npm install`
-
-### 📄 License
-
-MIT License - see LICENSE file for details
-
-### 🆘 Support
-
-- Issues: [GitHub Issues](https://github.com/DavFilsDev/zenithAI_react-typescript-frontend/issues)
-- Documentation: Check the Wiki
-- Email: miharisoadavidfils.com
-
-### 🙏 Acknowledgments
-
-- OpenAI for inspiration
-- React and TypeScript communities
-- Vite team for excellent tooling
-- All contributors and users
-
----
-
-**Author:** Fanampinirina Miharisoa David Fils RATIANDRAIBE 
-
----
-
-## 🔗 Connecting Frontend & Backend
-
-### Development Setup:
-1. Start backend: `cd zenithAI_django-backend && docker-compose up`
-2. Start frontend: `cd zenithAI_react-typescript-frontend && npm run dev`
-3. Access frontend: http://localhost:5173
-4. API running at: http://localhost:8000/api
-
-### Environment Variables Example:
-```env
-# Backend (.env)
-CORS_ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
-
-# Frontend (.env.local)
-VITE_API_URL=http://localhost:8000/api
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
