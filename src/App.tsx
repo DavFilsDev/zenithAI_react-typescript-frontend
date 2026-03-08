@@ -2,8 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { Login } from './pages/Login';
-// import { Register } from './pages/Register';
-// import { Chat } from './pages/Chat';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoading } = useAuth();
@@ -23,7 +21,6 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        {/* Toast notifications container */}
         <Toaster 
           position="top-right"
           toastOptions={{
@@ -35,7 +32,6 @@ function App() {
           }}
         />
         
-        {/* Routes configuration */}
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<div>Register Page (Coming Soon)</div>} />
@@ -57,7 +53,6 @@ function App() {
             }
           />
           
-          {/* Default redirect */}
           <Route path="/" element={<Navigate to="/chat" />} />
         </Routes>
       </AuthProvider>
