@@ -1,9 +1,70 @@
-import React from 'react'
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import { User, LoginCredentials, RegisterCredentials } from '../types/user';
+import { authService } from '../services/auth';
 
-const AuthContext = () => {
-  return (
-    <div>AuthContext</div>
-  )
+interface AuthContextType {
+  user: User | null;
+  isLoading: boolean;
+  login: (credentials: LoginCredentials) => Promise<void>;
+  register: (credentials: RegisterCredentials) => Promise<void>;
+  logout: () => void;
 }
 
-export default AuthContext
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
+  
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    
+    if (token) {
+      authService.getProfile()
+        .then((userData) => {
+          setUser(userData);
+        })
+        .catch(() => {
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const login = async (credentials: LoginCredentials) => {
+    const response = await authService.login(credentials);
+    setUser(response.user);
+  };
+
+  const register = async (credentials: RegisterCredentials) => {
+    const response = await authService.register(credentials);
+    setUser(response.user);
+  };
+
+  const logout = () => {
+    authService.logout();
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, isLoading, login, register, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  
+  return context;
+};
