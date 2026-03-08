@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -33,6 +34,7 @@ function App() {
         />
         
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<div>Register Page (Coming Soon)</div>} />
           
@@ -52,8 +54,6 @@ function App() {
               </PrivateRoute>
             }
           />
-          
-          <Route path="/" element={<Navigate to="/chat" />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
