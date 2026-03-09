@@ -38,16 +38,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<div>Register Page (Coming Soon)</div>} />
           
-          <Route
-            path="/chat"
+          <Route path="/chat"
             element={
               <PrivateRoute>
                 <div>Chat Page (Coming Soon)</div>
               </PrivateRoute>
             }
           />
-          <Route
-            path="/chat/:id"
+          <Route path="/chat/:id"
             element={
               <PrivateRoute>
                 <div>Chat Detail Page (Coming Soon)</div>
