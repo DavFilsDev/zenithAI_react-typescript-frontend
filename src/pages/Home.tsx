@@ -69,17 +69,6 @@ export const Home = () => {
 
         {/* Features Section */}
         <div className="mt-20 grid md:grid-cols-3 gap-8">
-
-          {/* Feature 3 */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <FiShield className="h-6 w-6 text-blue-600" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Secure & Private</h3>
-            <p className="text-gray-600">
-              Your conversations are private and secure with enterprise-grade encryption.
-            </p>
-          </div>
         </div>
 
         {/* Footer */}
