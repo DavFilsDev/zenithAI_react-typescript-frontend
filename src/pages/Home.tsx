@@ -38,9 +38,6 @@ export const Home = () => {
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
-          
-        
-
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {user ? (
@@ -72,16 +69,6 @@ export const Home = () => {
 
         {/* Features Section */}
         <div className="mt-20 grid md:grid-cols-3 gap-8">
-          {/* Feature 1 */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <FiZap className="h-6 w-6 text-blue-600" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Lightning Fast</h3>
-            <p className="text-gray-600">
-              Get instant responses to your questions with our advanced AI technology.
-            </p>
-          </div>
 
           {/* Feature 2 */}
           <div className="bg-white p-6 rounded-xl shadow-sm">
