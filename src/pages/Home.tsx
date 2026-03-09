@@ -39,12 +39,7 @@ export const Home = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
           
-          
-          {/* Subheading */}
-          <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
-            Experience the power of advanced AI conversations. Get instant answers, 
-            creative ideas, and intelligent assistance for any task.
-          </p>
+        
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
