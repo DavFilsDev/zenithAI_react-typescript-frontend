@@ -11,11 +11,6 @@ export const Home = () => {
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <FiMessageSquare className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">ZenithAI</span>
-            </div>
 
             {/* Navigation Links */}
             <div className="flex items-center space-x-4">
