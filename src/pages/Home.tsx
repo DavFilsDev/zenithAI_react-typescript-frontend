@@ -73,7 +73,7 @@ export const Home = () => {
 
         {/* Footer */}
         <footer className="mt-20 text-center text-gray-500 text-sm">
-          <p>&copy; 2024 ZenithAI. All rights reserved.</p>
+          <p>&copy; 2025 ZenithAI. All rights reserved.</p>
         </footer>
       </div>
     </div>
