@@ -25,12 +25,11 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         {isUser ? (
           <p className="whitespace-pre-wrap">{message.content}</p>
         ) : (
-          <ReactMarkdown 
-            className="prose prose-sm max-w-none"
-            // pros: Adds nice typography styles
-          >
-            {message.content}
-          </ReactMarkdown>
+          <div className="prose prose-sm max-w-none dark:prose-invert">
+            <ReactMarkdown>
+              {message.content}
+            </ReactMarkdown>
+          </div>
         )}
         
         {/* Timestamp */}
