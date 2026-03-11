@@ -26,7 +26,13 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
           <p className="whitespace-pre-wrap">{message.content}</p>
         ) : (
           <div className="prose prose-sm max-w-none dark:prose-invert">
-            <ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                code: ({ children }) => <code className="bg-gray-300 rounded px-1">{children}</code>,
+                pre: ({ children }) => <pre className="bg-gray-300 rounded p-2 overflow-x-auto">{children}</pre>,
+              }}
+            >
               {message.content}
             </ReactMarkdown>
           </div>
