@@ -1,8 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { Home } from './pages/Home';
 import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+import { Home } from './pages/Home';
+import { Chat } from './pages/Chat';
+import { useEffect } from 'react';
+import { useChatStore } from './store/chatStore';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoading } = useAuth();
@@ -18,41 +22,75 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   return user ? <>{children}</> : <Navigate to="/login" />;
 };
 
+const AppContent = () => {
+  const { user } = useAuth();
+  const { loadConversations } = useChatStore();
+
+  useEffect(() => {
+    if (user) {
+      loadConversations();
+    }
+  }, [user, loadConversations]);
+
+  return (
+    <Routes>
+      {/* Public routes */}
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      
+      {/* Protected routes */}
+      <Route
+        path="/chat"
+        element={
+          <PrivateRoute>
+            <Chat />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/chat/:id"
+        element={
+          <PrivateRoute>
+            <Chat />
+          </PrivateRoute>
+        }
+      />
+      
+    </Routes>
+  );
+};
+
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <AppContent />
+
         <Toaster 
           position="top-right"
           toastOptions={{
-            duration: 3000,
+            duration: 4000,
             style: {
               background: '#363636',
               color: '#fff',
             },
+            success: {
+              duration: 3000,
+              iconTheme: {
+                primary: '#10b981',
+                secondary: '#fff',
+              },
+            },
+            error: {
+              duration: 4000,
+              iconTheme: {
+                primary: '#ef4444',
+                secondary: '#fff',
+              },
+            },
           }}
         />
-        
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<div>Register Page (Coming Soon)</div>} />
-          
-          <Route path="/chat"
-            element={
-              <PrivateRoute>
-                <div>Chat Page (Coming Soon)</div>
-              </PrivateRoute>
-            }
-          />
-          <Route path="/chat/:id"
-            element={
-              <PrivateRoute>
-                <div>Chat Detail Page (Coming Soon)</div>
-              </PrivateRoute>
-            }
-          />
-        </Routes>
       </AuthProvider>
     </BrowserRouter>
   );
