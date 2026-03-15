@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { useTheme } from './contexts/ThemeContext';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Home } from './pages/Home';
@@ -63,6 +64,8 @@ const AppContent = () => {
 };
 
 function App() {
+  const { theme } = useTheme(); 
+
   return (
     <BrowserRouter>
       <ThemeProvider>
@@ -74,21 +77,21 @@ function App() {
             toastOptions={{
               duration: 4000,
               style: {
-                background: '#363636',
-                color: '#fff',
+                background: theme === 'dark' ? '#363636' : '#ffffff',
+                color: theme === 'dark' ? '#ffffff' : '#363636',
               },
               success: {
                 duration: 3000,
                 iconTheme: {
                   primary: '#10b981',
-                  secondary: '#fff',
+                  secondary: theme === 'dark' ? '#ffffff' : '#ffffff',
                 },
               },
               error: {
                 duration: 4000,
                 iconTheme: {
                   primary: '#ef4444',
-                  secondary: '#fff',
+                  secondary: theme === 'dark' ? '#ffffff' : '#ffffff',
                 },
               },
             }}
