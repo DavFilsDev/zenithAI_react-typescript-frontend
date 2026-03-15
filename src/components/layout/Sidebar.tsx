@@ -2,12 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
-import { FiPlus, FiLogOut, FiTrash2, FiMessageSquare } from 'react-icons/fi';
+import { useTheme } from '../../contexts/ThemeContext';
+import { FiPlus, FiLogOut, FiTrash2, FiMessageSquare, FiSun, FiMoon } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
 
 export const Sidebar: React.FC = () => {
   const { conversations, loadConversation, deleteConversation, clearCurrentConversation } = useChatStore();
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleNewChat = () => {
@@ -83,6 +85,28 @@ export const Sidebar: React.FC = () => {
 
       {/* User Info Section */}
       <div className="p-4 border-t border-gray-800">
+        {/* Theme Toggle Button */}
+        <div className="flex justify-center mb-3">
+          <button
+            onClick={toggleTheme}
+            className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-200 text-sm"
+            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            {theme === 'light' ? (
+              <>
+                <FiMoon size={16} />
+                <span>Dark Mode</span>
+              </>
+            ) : (
+              <>
+                <FiSun size={16} />
+                <span>Light Mode</span>
+              </>
+            )}
+          </button>
+        </div>
+
+        {/* User info and logout */}
         <div className="flex items-center justify-between">
           {/* User avatar and info */}
           <div className="flex items-center gap-2 min-w-0">
