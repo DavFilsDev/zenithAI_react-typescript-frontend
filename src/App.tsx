@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { ThemeProvider } from './contexts/ThemeContext';
-import { useTheme } from './contexts/ThemeContext';
+import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Home } from './pages/Home';
@@ -58,45 +57,51 @@ const AppContent = () => {
           </PrivateRoute>
         }
       />
-      
     </Routes>
   );
 };
 
-function App() {
-  const { theme } = useTheme(); 
+const AppWithTheme = () => {
+  const { theme } = useTheme();
 
+  return (
+    <AuthProvider>
+      <AppContent />
+      
+      {/* Toast notifications - now has access to theme */}
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: theme === 'dark' ? '#363636' : '#ffffff',
+            color: theme === 'dark' ? '#ffffff' : '#363636',
+          },
+          success: {
+            duration: 3000,
+            iconTheme: {
+              primary: '#10b981',
+              secondary: theme === 'dark' ? '#ffffff' : '#ffffff',
+            },
+          },
+          error: {
+            duration: 4000,
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: theme === 'dark' ? '#ffffff' : '#ffffff',
+            },
+          },
+        }}
+      />
+    </AuthProvider>
+  );
+};
+
+function App() {
   return (
     <BrowserRouter>
       <ThemeProvider>
-        <AuthProvider>
-          <AppContent />
-
-          <Toaster 
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: theme === 'dark' ? '#363636' : '#ffffff',
-                color: theme === 'dark' ? '#ffffff' : '#363636',
-              },
-              success: {
-                duration: 3000,
-                iconTheme: {
-                  primary: '#10b981',
-                  secondary: theme === 'dark' ? '#ffffff' : '#ffffff',
-                },
-              },
-              error: {
-                duration: 4000,
-                iconTheme: {
-                  primary: '#ef4444',
-                  secondary: theme === 'dark' ? '#ffffff' : '#ffffff',
-                },
-              },
-            }}
-          />
-        </AuthProvider>
+        <AppWithTheme />
       </ThemeProvider>
     </BrowserRouter>
   );
