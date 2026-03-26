@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { ThemeToggle } from '../components/ui/ThemeToggle';
 import { Typewriter } from '../components/ui/Typewriter';
+import { GlassButton } from '../components/ui/GlassButton';
 
 export const Home = () => {
   const { user } = useAuth();
@@ -44,14 +45,11 @@ export const Home = () => {
           <p className="mt-4 text-sm md:text-lg opacity-80">
             Get real-time coding guidance and best practices for all languages.
           </p>
-          
+
           <div className="mt-8">
-            <Link
-              to={user ? "/chat" : "/login"}
-              className="px-8 py-4 rounded-xl bg-[rgb(var(--color-primary))] text-white font-semibold hover:opacity-90 transition"
-            >
+            <GlassButton to={user ? "/chat" : "/login"}>
               Get Started
-            </Link>
+            </GlassButton>
           </div>
 
         </div>
