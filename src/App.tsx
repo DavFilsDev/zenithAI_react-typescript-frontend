@@ -14,7 +14,8 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   const { user, isLoading } = useAuth();
   if (isLoading) return <Loader />;
 
-  return user ? <>{children}</> : <Navigate to="/login" />;
+  if (!user) return <Navigate to="/login" replace />;
+  return children;
 };
 
 const AppContent = () => {
