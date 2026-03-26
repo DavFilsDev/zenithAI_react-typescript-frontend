@@ -18,7 +18,7 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   return children;
 };
 
-function App() {
+function AppContent() {
   const { user } = useAuth();
   const { loadConversations } = useChatStore();
 
@@ -29,28 +29,34 @@ function App() {
   }, [user, loadConversations]);
 
   return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/chat" element={
+          <PrivateRoute>
+            <Chat />
+          </PrivateRoute>
+        }/>
+
+        <Route path="/chat/:id" element={
+          <PrivateRoute>
+            <Chat />
+          </PrivateRoute>
+        }/>
+      </Routes>
+    </>
+  );
+}
+
+function App() {
+  return (
     <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            
-            <Route path="/chat" element={
-                <PrivateRoute>
-                  <Chat />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/chat/:id" element={
-                <PrivateRoute>
-                  <Chat />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-          
+          <AppContent/>
           <Toaster 
             position="top-right"
             toastOptions={{
