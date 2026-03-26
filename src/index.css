@@ -21,3 +21,8 @@
   --color-primary-light: 252 165 165;
   --color-primary-dark: 185 28 28;
 }
+
+body {
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+}
