@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { ThemeToggle } from '../components/ui/ThemeToggle';
+import { Typewriter } from '../components/ui/Typewriter';
 
 export const Home = () => {
   const { user } = useAuth();
@@ -39,9 +40,7 @@ export const Home = () => {
 
       <main className="flex-1 flex items-center justify-center px-6">
         <div className="text-center max-w-2xl">
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-            Your AI coding assistant
-          </h2>
+          <Typewriter text="ZenithAI — your AI assistant for debugging code like a pro!" speed={80} />
 
           <div className="mt-8">
             <Link
