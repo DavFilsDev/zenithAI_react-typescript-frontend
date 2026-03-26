@@ -6,16 +6,11 @@ export const Home = () => {
 
   return (
     <div className="h-screen w-full overflow-hidden bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] flex flex-col">
-
-      {/* HEADER */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-white/10 backdrop-blur-md">
-        
-        {/* Logo */}
         <h1 className="text-xl font-bold tracking-wide">
           Zenith<span className="text-[rgb(var(--color-primary))]">AI</span>
         </h1>
 
-        {/* Right actions */}
         <div className="flex items-center gap-4">
           {!user && (
             <>
@@ -39,16 +34,12 @@ export const Home = () => {
         </div>
       </header>
 
-      {/* MAIN */}
       <main className="flex-1 flex items-center justify-center px-6">
         <div className="text-center max-w-2xl">
-
-          {/* Title placeholder */}
           <h2 className="text-3xl md:text-5xl font-bold leading-tight">
             Your AI coding assistant
           </h2>
 
-          {/* CTA placeholder */}
           <div className="mt-8">
             <Link
               to={user ? "/chat" : "/login"}
