@@ -1,78 +1,80 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { ThemeToggle } from '../components/ui/ThemeToggle';
+import { Typewriter } from '../components/ui/Typewriter';
+import { GlassButton } from '../components/ui/GlassButton';
 
 export const Home = () => {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Navigation Bar */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+    <div className="h-screen w-full overflow-hidden bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] flex flex-col">
+      <header className="flex items-center justify-between px-6 py-4 border-b border-white/10 backdrop-blur-md">
+        <h1 className="text-xl font-bold tracking-wide">
+          Zenith<span className="text-[rgb(var(--color-primary))]">AI</span>
+        </h1>
 
-            {/* Navigation Links */}
-            <div className="flex items-center space-x-4">
-              {user ? (
-                <Link
-                  to="/chat"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
-                >
-                  <span>Go to Chat</span>
-                </Link>
-              ) : (
-                <Link
-                  to="/login"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Login
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-      </nav>
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
 
-      {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center">
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {user ? (
-              <Link
-                to="/chat"
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center justify-center space-x-2"
-              >
-                <span>Start Chatting</span>
+          {!user && (
+            <>
+              <Link to="/login" className="text-sm opacity-80 hover:opacity-100 transition">
+                Login
               </Link>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Get Started
-                </Link>
-                <Link
-                  to="/register"
-                  className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
-                >
-                  Create Account
-                </Link>
-              </>
-            )}
+              <Link to="/register"  className="text-sm opacity-80 hover:opacity-100 transition">
+                Register
+              </Link>
+            </>
+          )}
+
+          {user && (
+            <Link
+              to="/chat"
+              className="px-4 py-2 rounded-lg bg-[rgb(var(--color-primary))] text-white hover:opacity-90 transition"
+            >
+              Chat
+            </Link>
+          )}
+        </div>
+      </header>
+
+      <main className="flex-1 flex items-center justify-center px-6">
+        <div className="text-center max-w-2xl">
+          <Typewriter text="ZenithAI — your AI assistant for debugging code like a pro!" speed={80} />
+          <p className="mt-4 text-sm md:text-lg opacity-80">
+            Get real-time coding guidance and best practices for all languages.
+          </p>
+
+          <div className="mt-8">
+            <GlassButton to={user ? "/chat" : "/login"}>
+              Get Started
+            </GlassButton>
           </div>
-        </div>
 
-        {/* Features Section */}
-        <div className="mt-20 grid md:grid-cols-3 gap-8">
         </div>
+      </main>
 
-        {/* Footer */}
-        <footer className="mt-20 text-center text-gray-500 text-sm">
-          <p>&copy; 2025 ZenithAI. All rights reserved.</p>
-        </footer>
-      </div>
+      <footer className="w-full py-2 mt-auto
+                        bg-white/10 dark:bg-white/5
+                        backdrop-blur-md
+                        border-t border-white/20 dark:border-white/10
+                        text-sm text-[rgb(var(--color-text))] 
+                        flex flex-col md:flex-row items-center justify-center gap-4
+                        transition-colors
+                        shadow-inner shadow-white/5">
+        
+        <p>© 2025 ZenithAI</p>
+
+        <div className="flex gap-4">
+          <a href="/privacy" className="hover:underline opacity-80 hover:text-[rgb(var(--color-primary))] transition">
+            Privacy
+          </a>
+          <a href="/terms" className="hover:underline opacity-80 hover:text-[rgb(var(--color-primary))] transition">
+            Terms
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };
