@@ -9,13 +9,13 @@ import { Chat } from './pages/Chat';
 import { useEffect } from 'react';
 import { useChatStore } from './store/chatStore';
 import { Loader } from './components/ui/Loader';
+import { Outlet } from "react-router-dom";
 
-const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const PrivateRoute = () => {
   const { user, isLoading } = useAuth();
   if (isLoading) return <Loader />;
-
   if (!user) return <Navigate to="/login" replace />;
-  return children;
+  return <Outlet />;
 };
 
 function AppContent() {
@@ -35,17 +35,10 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/chat" element={
-          <PrivateRoute>
-            <Chat />
-          </PrivateRoute>
-        }/>
-
-        <Route path="/chat/:id" element={
-          <PrivateRoute>
-            <Chat />
-          </PrivateRoute>
-        }/>
+        <Route element={<PrivateRoute />}>
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/chat/:id" element={<Chat />} />
+        </Route>
       </Routes>
     </>
   );
