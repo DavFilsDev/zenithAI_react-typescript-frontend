@@ -34,3 +34,11 @@ body {
 .glass {
   @apply backdrop-blur-md bg-white/10 border border-white/20;
 }
+
+.gradient-primary {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--color-primary-light)),
+    rgb(var(--color-primary-dark))
+  );
+}
