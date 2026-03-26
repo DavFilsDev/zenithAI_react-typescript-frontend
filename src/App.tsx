@@ -14,8 +14,8 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" />
+      <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-bg))]">
+        <div className="animate-spin rounded-full h-12 w-12 border-2 border-transparent border-t-[rgb(var(--color-primary))]" />
       </div>
     );
   }
