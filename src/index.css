@@ -17,18 +17,18 @@
 }
 
 .dark {
-  --color-bg: 2 6 23;
-  --color-text: 248 250 252;
+  /* Adjust red for dark mode */
+  --color-primary: 239 68 68;
+  --color-primary-light: 252 165 165;
+  --color-primary-dark: 185 28 28;
 
   /* Slightly adjusted for dark mode */
   --color-success: 74 222 128;
   --color-error: 248 113 113;
   --color-warning: 250 204 21;
 
-  /* Adjust red for dark mode */
-  --color-primary: 239 68 68;
-  --color-primary-light: 252 165 165;
-  --color-primary-dark: 185 28 28;
+  --color-bg: 2 6 23;
+  --color-text: 248 250 252;
 }
 
 body {

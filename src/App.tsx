@@ -73,22 +73,22 @@ const AppWithTheme = () => {
         position="top-right"
         toastOptions={{
           duration: 4000,
-          style: {
-            background: theme === 'dark' ? '#363636' : '#ffffff',
-            color: theme === 'dark' ? '#ffffff' : '#363636',
-          },
+          className:
+            "bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] backdrop-blur-md border border-white/10 shadow-lg",
+          
           success: {
             duration: 3000,
             iconTheme: {
-              primary: '#10b981',
-              secondary: theme === 'dark' ? '#ffffff' : '#ffffff',
+              primary: 'rgb(var(--color-success))',
+              secondary: 'white',
             },
           },
+
           error: {
             duration: 4000,
             iconTheme: {
-              primary: '#ef4444',
-              secondary: theme === 'dark' ? '#ffffff' : '#ffffff',
+              primary: 'rgb(var(--color-error))',
+              secondary: 'white',
             },
           },
         }}
