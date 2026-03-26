@@ -55,9 +55,24 @@ export const Home = () => {
         </div>
       </main>
 
-      {/* FOOTER */}
-      <footer className="text-center text-sm opacity-60 py-4">
-        © 2026 ZenithAI
+      <footer className="w-full py-2 mt-auto
+                        bg-white/10 dark:bg-white/5
+                        backdrop-blur-md
+                        border-t border-white/20 dark:border-white/10
+                        text-sm text-[rgb(var(--color-text))] 
+                        flex flex-col md:flex-row items-center justify-center gap-4
+                        transition-colors">
+        
+        <p>© 2025 ZenithAI</p>
+
+        <div className="flex gap-4">
+          <a href="/privacy" className="hover:underline opacity-80 hover:opacity-100 transition">
+            Privacy
+          </a>
+          <a href="/terms" className="hover:underline opacity-80 hover:opacity-100 transition">
+            Terms
+          </a>
+        </div>
       </footer>
     </div>
   );
