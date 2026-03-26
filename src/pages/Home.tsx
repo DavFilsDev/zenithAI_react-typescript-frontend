@@ -64,7 +64,7 @@ export const Home = () => {
                         transition-colors
                         shadow-inner shadow-white/5">
         
-        <p>© 2025 ZenithAI</p>
+        <p>© 2026 ZenithAI</p>
 
         <div className="flex gap-4">
           <a href="/privacy" className="hover:underline opacity-80 hover:text-[rgb(var(--color-primary))] transition">
