@@ -30,3 +30,7 @@ body {
 .btn-primary {
   @apply bg-[rgb(var(--color-primary))] text-white;
 }
+
+.glass {
+  @apply backdrop-blur-md bg-white/10 border border-white/20;
+}
