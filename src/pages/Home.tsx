@@ -41,7 +41,10 @@ export const Home = () => {
       <main className="flex-1 flex items-center justify-center px-6">
         <div className="text-center max-w-2xl">
           <Typewriter text="ZenithAI — your AI assistant for debugging code like a pro!" speed={80} />
-
+          <p className="mt-4 text-sm md:text-lg opacity-80">
+            Get real-time coding guidance and best practices for all languages.
+          </p>
+          
           <div className="mt-8">
             <Link
               to={user ? "/chat" : "/login"}
