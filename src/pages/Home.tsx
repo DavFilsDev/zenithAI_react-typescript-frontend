@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { ThemeToggle } from '../components/ui/ThemeToggle';
 
 export const Home = () => {
   const { user } = useAuth();
@@ -12,12 +13,14 @@ export const Home = () => {
         </h1>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
+
           {!user && (
             <>
               <Link to="/login" className="text-sm opacity-80 hover:opacity-100 transition">
                 Login
               </Link>
-              <Link to="/register" className="text-sm opacity-80 hover:opacity-100 transition">
+              <Link to="/register"  className="text-sm opacity-80 hover:opacity-100 transition">
                 Register
               </Link>
             </>
