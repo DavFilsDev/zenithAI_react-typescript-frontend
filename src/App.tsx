@@ -8,17 +8,11 @@ import { Home } from './pages/Home';
 import { Chat } from './pages/Chat';
 import { useEffect } from 'react';
 import { useChatStore } from './store/chatStore';
+import { Loader } from './components/ui/Loader';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-bg))]">
-        <div className="animate-spin rounded-full h-12 w-12 border-2 border-transparent border-t-[rgb(var(--color-primary))]" />
-      </div>
-    );
-  }
+  if (isLoading) return <Loader />;
 
   return user ? <>{children}</> : <Navigate to="/login" />;
 };
