@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+:root {
+  /* Primary (Red) */
+  --color-primary: 220 38 38;       /* red-600 */
+  --color-primary-light: 248 113 113; /* red-400 */
+  --color-primary-dark: 153 27 27;  /* red-800 */
+
+  /* Neutral (Light mode) */
+  --color-bg: 255 255 255;
+  --color-text: 15 23 42;
+}
+
+.dark {
+  /* Neutral (Dark mode) */
+  --color-bg: 2 6 23;
+  --color-text: 248 250 252;
+
+  /* Adjust red for dark mode */
+  --color-primary: 239 68 68;
+  --color-primary-light: 252 165 165;
+  --color-primary-dark: 185 28 28;
+}
