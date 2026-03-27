@@ -68,7 +68,21 @@ export const Register = () => {
             error={errors.lastName?.message}
           />
 
-          {/* Other fields (email, password, confirmPassword) will be added in next steps */}
+          <Input
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            registration={register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid email address',
+              },
+            })}
+            error={errors.email?.message}
+          />
+
+          {/* Other fields (password, confirmPassword) will be added in next steps */}
         </form>
       </div>
     </div>
