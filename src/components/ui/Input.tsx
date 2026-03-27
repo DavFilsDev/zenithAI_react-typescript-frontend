@@ -5,15 +5,15 @@ import { type UseFormRegisterReturn } from 'react-hook-form';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
-  registration?: UseFormRegisterReturn; // <-- add this line
+  registration?: UseFormRegisterReturn;
 }
 
 export const Input: React.FC<InputProps> = ({
   label,
   error,
+  registration,
   type = 'text',
   className = '',
-  registration,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,26 +22,22 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className="space-y-1 relative">
       <label className="text-sm font-medium opacity-80">{label}</label>
-
       <div className="relative">
         <input
           type={isPassword && showPassword ? 'text' : type}
-          {...registration} // <-- pass registration here
+          {...registration}
           {...props}
           className={`
             w-full px-4 py-2 rounded-xl
             bg-white/10 dark:bg-white/5
             backdrop-blur-md
             border border-white/20 dark:border-white/10
-            focus:outline-none focus:ring-2 
-            focus:ring-[rgb(var(--color-primary))]
+            focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-primary))]
             pr-10
             transition-all
             ${className}
           `}
         />
-
-        {/* Eye Icon */}
         {isPassword && (
           <button
             type="button"
@@ -56,8 +52,6 @@ export const Input: React.FC<InputProps> = ({
           </button>
         )}
       </div>
-
-      {/* Error */}
       {error && <p className="text-red-400 text-sm">{error}</p>}
     </div>
   );
