@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Input } from '../components/ui/Input';
 
 interface LoginForm {
   email: string;
@@ -55,31 +56,19 @@ export const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           
           {/* Email field */}
-          <div>
-            <label 
-              htmlFor="email" 
-              className="block text-sm font-medium text-gray-700"
-            >
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              {...register('email', { 
-                required: 'Email is required',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Invalid email address'
-                }
-              })}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              placeholder="Enter your email"
-            />
-            {/* Email error message */}
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-            )}
-          </div>
+          <Input
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            registration={register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid email address',
+              },
+            })}
+            error={errors.email}
+          />
           
           {/* Password field */}
           <div>
