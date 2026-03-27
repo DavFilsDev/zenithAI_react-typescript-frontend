@@ -44,8 +44,11 @@ export const Login = () => {
                 shadow-xl">
         
         {/* Header */}
-        <h2 className="text-3xl font-bold text-center">
-          Login to ZenithAI
+        <h2 className="text-2xl md:text-3xl font-bold text-center">
+          Welcome back to 
+          <span className="text-[rgb(var(--color-primary))] ml-1">
+            ZenithAI
+          </span>
         </h2>
         
         {/* Login form */}
