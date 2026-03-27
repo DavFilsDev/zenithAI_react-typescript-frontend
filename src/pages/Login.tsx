@@ -75,22 +75,15 @@ export const Login = () => {
                 message: 'Invalid email address',
               },
             })}
-            error={errors.email}
+            error={errors.email?.message}
           />
           
           {/* Password field */}
           <Input
             label="Password"
             type="password"
-            placeholder="Enter your password"
-            registration={register('password', {
-              required: 'Password is required',
-              minLength: {
-                value: 6,
-                message: 'Password must be at least 6 characters',
-              },
-            })}
-            error={errors.password}
+            {...register('password', { required: 'Password is required' })}
+            error={errors.password?.message}
           />
           
           {/* Submit button */}
