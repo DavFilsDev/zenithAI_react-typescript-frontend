@@ -36,7 +36,12 @@ export const Login = () => {
                 text-[rgb(var(--color-text))] 
                 px-4">
       {/* Login card */}
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
+      <div className="max-w-md w-full p-8 space-y-6
+                bg-white/10 dark:bg-white/5
+                backdrop-blur-md
+                border border-white/20 dark:border-white/10
+                rounded-2xl
+                shadow-xl">
         
         {/* Header */}
         <h2 className="text-3xl font-bold text-center">
