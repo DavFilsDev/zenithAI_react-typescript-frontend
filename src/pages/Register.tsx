@@ -60,7 +60,6 @@ export const Register = () => {
             error={errors.firstName?.message}
           />
 
-          {/* Last Name (optional) */}
           <Input
             label="Last Name (Optional)"
             type="text"
