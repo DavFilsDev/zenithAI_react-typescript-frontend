@@ -2,8 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Input } from '../components/ui/Input'; // reusable Input
-import { Button } from '../components/ui/Button'; // optional for submit button styling
+import { Input } from '../components/ui/Input';
+import { Button } from '../components/ui/Button';
+import { useState } from 'react';
 
 interface RegisterForm {
   email: string;
@@ -16,6 +17,7 @@ interface RegisterForm {
 export const Register = () => {
   const { register: registerUser } = useAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const { 
     register, 
     handleSubmit, 
@@ -27,6 +29,7 @@ export const Register = () => {
 
   const onSubmit = async (data: RegisterForm) => {
     try {
+      setLoading(true);
       await registerUser({
         email: data.email,
         password: data.password,
@@ -37,6 +40,8 @@ export const Register = () => {
       navigate('/chat');
     } catch (error) {
       toast.error('Registration failed');
+    } finally {
+      setLoading(false);
     }
   };
 
