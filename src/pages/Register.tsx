@@ -92,7 +92,17 @@ export const Register = () => {
             })}
             error={errors.password?.message}
           />
-          {/* Other fields (confirmPassword) will be added in next steps */}
+          
+          <Input
+            label="Confirm Password"
+            type="password"
+            placeholder="Confirm your password"
+            registration={register('confirmPassword', {
+              required: 'Please confirm your password',
+              validate: value => value === password || 'Passwords do not match',
+            })}
+            error={errors.confirmPassword?.message}
+          />
         </form>
       </div>
     </div>
