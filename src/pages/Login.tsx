@@ -82,6 +82,7 @@ export const Login = () => {
           <Input
             label="Password"
             type="password"
+            placeholder="Enter your password"
             {...register('password', { required: 'Password is required' })}
             error={errors.password?.message}
           />
