@@ -112,6 +112,25 @@ export const Register = () => {
           <Button type="submit" loading={loading}>
             Sign Up
           </Button>
+
+          <p className="text-center text-sm opacity-70 mt-4">
+            Already have an account?{' '}
+            <Link
+              to="/login"
+              className="
+                font-medium
+                text-[rgb(var(--color-primary))]
+                relative
+                after:absolute after:left-0 after:-bottom-0.5
+                after:h-[1px] after:w-0
+                after:bg-[rgb(var(--color-primary))]
+                after:transition-all after:duration-300
+                hover:after:w-full
+              "
+            >
+              Login here
+            </Link>
+          </p>
         </form>
       </div>
     </div>
