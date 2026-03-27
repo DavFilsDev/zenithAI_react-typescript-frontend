@@ -71,31 +71,19 @@ export const Login = () => {
           />
           
           {/* Password field */}
-          <div>
-            <label 
-              htmlFor="password" 
-              className="block text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              {...register('password', { 
-                required: 'Password is required',
-                minLength: {
-                  value: 6,
-                  message: 'Password must be at least 6 characters'
-                }
-              })}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              placeholder="Enter your password"
-            />
-            {/* Password error message */}
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
-            )}
-          </div>
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            registration={register('password', {
+              required: 'Password is required',
+              minLength: {
+                value: 6,
+                message: 'Password must be at least 6 characters',
+              },
+            })}
+            error={errors.password}
+          />
           
           {/* Submit button */}
           <button
