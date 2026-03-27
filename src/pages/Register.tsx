@@ -82,7 +82,17 @@ export const Register = () => {
             error={errors.email?.message}
           />
 
-          {/* Other fields (password, confirmPassword) will be added in next steps */}
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            registration={register('password', {
+              required: 'Password is required',
+              minLength: { value: 6, message: 'Password must be at least 6 characters' },
+            })}
+            error={errors.password?.message}
+          />
+          {/* Other fields (confirmPassword) will be added in next steps */}
         </form>
       </div>
     </div>
