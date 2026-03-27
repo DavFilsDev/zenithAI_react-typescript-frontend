@@ -61,9 +61,9 @@ export const Input: React.FC<InputProps> = ({
             "
           >
             {showPassword ? (
-              <EyeOff size={18} />
+                <EyeOff className="text-[rgb(var(--color-primary))]" size={18} />
             ) : (
-              <Eye size={18} />
+              <Eye className="text-[rgb(var(--color-primary))]" size={18} />
             )}
           </button>
         )}

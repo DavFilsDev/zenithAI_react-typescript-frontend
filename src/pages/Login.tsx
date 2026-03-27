@@ -75,7 +75,7 @@ export const Login = () => {
                 message: 'Invalid email address',
               },
             })}
-            error={errors.email?.message}
+            error={errors.email}
           />
           
           {/* Password field */}
