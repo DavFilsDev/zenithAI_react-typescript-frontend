@@ -103,6 +103,10 @@ export const Register = () => {
             })}
             error={errors.confirmPassword?.message}
           />
+
+          <Button type="submit" loading={loading}>
+            Sign Up
+          </Button>
         </form>
       </div>
     </div>
