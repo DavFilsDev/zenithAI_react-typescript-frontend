@@ -68,14 +68,14 @@ export const Login = () => {
             label="Email"
             type="email"
             placeholder="Enter your email"
-            registration={register('email', {
+            {...register('email', {
               required: 'Email is required',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: 'Invalid email address',
               },
             })}
-            error={errors.email}
+            error={errors.email?.message}
           />
           
           {/* Password field */}
