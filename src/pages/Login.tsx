@@ -99,13 +99,22 @@ export const Login = () => {
           </Button>
           
           {/* Link to register page */}
-          <p className="text-center text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link 
-              to="/register" 
-              className="text-blue-600 hover:text-blue-700 font-medium"
+          <p className="text-center text-sm opacity-70">
+            Don’t have an account?{" "}
+            <Link
+              to="/register"
+              className="
+                font-medium
+                text-[rgb(var(--color-primary))]
+                relative
+                after:absolute after:left-0 after:-bottom-0.5
+                after:h-[1px] after:w-0
+                after:bg-[rgb(var(--color-primary))]
+                after:transition-all after:duration-300
+                hover:after:w-full
+              "
             >
-              Register here
+              Create one
             </Link>
           </p>
         </form>
