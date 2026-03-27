@@ -51,7 +51,25 @@ export const Register = () => {
 
         {/* Form placeholder */}
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
-          {/* Fields will be added in next steps */}
+          {/* First Name (optional) */}
+          <Input
+            label="First Name (Optional)"
+            type="text"
+            placeholder="Enter your first name"
+            registration={register('firstName')}
+            error={errors.firstName?.message}
+          />
+
+          {/* Last Name (optional) */}
+          <Input
+            label="Last Name (Optional)"
+            type="text"
+            placeholder="Enter your last name"
+            registration={register('lastName')}
+            error={errors.lastName?.message}
+          />
+
+          {/* Other fields (email, password, confirmPassword) will be added in next steps */}
         </form>
       </div>
     </div>
