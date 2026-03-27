@@ -48,10 +48,18 @@ export const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-bg))]">
       {/* Glass card container */}
-      <div className="max-w-md w-full p-8 bg-[rgb(var(--color-card))]/70 backdrop-blur-lg rounded-2xl shadow-xl">
+      <div className="max-w-md w-full p-8 space-y-6
+                bg-white/10 dark:bg-white/5
+                backdrop-blur-md
+                border border-white/20 dark:border-white/10
+                rounded-2xl
+                shadow-xl">
         {/* Header */}
-        <h2 className="text-3xl font-bold text-center text-[rgb(var(--color-text))]">
-          Create Account
+        <h2 className="text-2xl md:text-3xl font-bold text-center">
+          Create account on
+          <span className="text-[rgb(var(--color-primary))] ml-1">
+            ZenithAI
+          </span>
         </h2>
 
         {/* Form placeholder */}
