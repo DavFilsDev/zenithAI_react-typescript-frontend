@@ -2,6 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Input } from '../components/ui/Input';
+import { Button } from '../components/ui/Button';
+import { useState } from 'react';
 
 interface RegisterForm {
   email: string;
@@ -14,6 +17,7 @@ interface RegisterForm {
 export const Register = () => {
   const { register: registerUser } = useAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const { 
     register, 
     handleSubmit, 
@@ -25,6 +29,7 @@ export const Register = () => {
 
   const onSubmit = async (data: RegisterForm) => {
     try {
+      setLoading(true);
       await registerUser({
         email: data.email,
         password: data.password,
@@ -35,109 +40,102 @@ export const Register = () => {
       navigate('/chat');
     } catch (error) {
       toast.error('Registration failed');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
-        <h2 className="text-3xl font-bold text-center">Create Account</h2>
-        
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* First Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              First Name (Optional)
-            </label>
-            <input
-              type="text"
-              {...register('firstName')}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-            />
-          </div>
+    <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-bg))]">
+      {/* Glass card container */}
+      <div className="max-w-md w-full p-8 space-y-6
+                bg-white/10 dark:bg-white/5
+                backdrop-blur-md
+                border border-white/20 dark:border-white/10
+                rounded-2xl
+                shadow-xl">
+        {/* Header */}
+        <h2 className="text-2xl md:text-3xl font-bold text-center">
+          Create account on
+          <span className="text-[rgb(var(--color-primary))] ml-1">
+            ZenithAI
+          </span>
+        </h2>
 
-          {/* Last Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Last Name (Optional)
-            </label>
-            <input
-              type="text"
-              {...register('lastName')}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-            />
-          </div>
+        {/* Form placeholder */}
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
+          {/* First Name (optional) */}
+          <Input
+            label="First Name (Optional)"
+            type="text"
+            placeholder="Enter your first name"
+            registration={register('firstName')}
+            error={errors.firstName?.message}
+          />
 
-          {/* Email */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              {...register('email', { 
-                required: 'Email is required',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Invalid email address'
-                }
-              })}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-            )}
-          </div>
+          <Input
+            label="Last Name (Optional)"
+            type="text"
+            placeholder="Enter your last name"
+            registration={register('lastName')}
+            error={errors.lastName?.message}
+          />
 
-          {/* Password */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <input
-              type="password"
-              {...register('password', { 
-                required: 'Password is required',
-                minLength: {
-                  value: 6,
-                  message: 'Password must be at least 6 characters'
-                }
-              })}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-            />
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
-            )}
-          </div>
+          <Input
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            registration={register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid email address',
+              },
+            })}
+            error={errors.email?.message}
+          />
 
-          {/* Confirm Password */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              {...register('confirmPassword', { 
-                required: 'Please confirm your password',
-                validate: value => value === password || 'Passwords do not match'
-              })}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-            />
-            {errors.confirmPassword && (
-              <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>
-            )}
-          </div>
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            registration={register('password', {
+              required: 'Password is required',
+              minLength: { value: 6, message: 'Password must be at least 6 characters' },
+            })}
+            error={errors.password?.message}
+          />
+          
+          <Input
+            label="Confirm Password"
+            type="password"
+            placeholder="Confirm your password"
+            registration={register('confirmPassword', {
+              required: 'Please confirm your password',
+              validate: value => value === password || 'Passwords do not match',
+            })}
+            error={errors.confirmPassword?.message}
+          />
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
-          >
+          <Button type="submit" loading={loading}>
             Sign Up
-          </button>
+          </Button>
 
-          <p className="text-center text-sm text-gray-600">
+          <p className="text-center text-sm opacity-70 mt-4">
             Already have an account?{' '}
-            <Link to="/login" className="text-blue-600 hover:text-blue-700 font-medium">
+            <Link
+              to="/login"
+              className="
+                font-medium
+                text-[rgb(var(--color-primary))]
+                relative
+                after:absolute after:left-0 after:-bottom-0.5
+                after:h-[1px] after:w-0
+                after:bg-[rgb(var(--color-primary))]
+                after:transition-all after:duration-300
+                hover:after:w-full
+              "
+            >
               Login here
             </Link>
           </p>
