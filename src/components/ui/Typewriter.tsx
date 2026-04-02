@@ -27,9 +27,17 @@ export const Typewriter: React.FC<TypewriterProps> = ({ text, speed = 100 }) => 
   }, []);
 
   return (
-    <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-      {displayedText}
-      <span className={`ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
-    </h2>
-  );
+  <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+    {displayedText}
+    <span
+      className={`
+        ml-1
+        text-[rgb(var(--color-primary))]
+        ${showCursor ? 'opacity-100' : 'opacity-0'}
+      `}
+    >
+      |
+    </span>
+  </h2>
+);
 };
