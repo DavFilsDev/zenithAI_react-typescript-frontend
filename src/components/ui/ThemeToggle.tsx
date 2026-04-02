@@ -14,22 +14,22 @@ export const ThemeToggle = () => {
         bg-white/10 dark:bg-white/5
         backdrop-blur-md border border-white/20 dark:border-white/10
         flex items-center justify-between
-        transition-all duration-300 ease-in-out
       "
     >
-      {/* Sliding background */}
+      {/* Sliding background (FIXED direction) */}
       <div
         className={`
           absolute top-1 left-1 w-7 h-7 rounded-full
+          flex items-center justify-center
+          shadow-md
           transition-all duration-300 ease-in-out
-          shadow-md flex items-center justify-center
           ${isDark 
-            ? 'translate-x-7 bg-[rgb(var(--color-primary))]' 
-            : 'translate-x-0 bg-yellow-400'}
+            ? 'translate-x-0 bg-[rgb(var(--color-primary))]'   // 🌙 LEFT
+            : 'translate-x-7 bg-yellow-400'}                  // ☀️ RIGHT
         `}
       />
 
-      {/* Moon (left) */}
+      {/* Moon (LEFT) */}
       <div className="z-10 w-7 h-7 flex items-center justify-center">
         <Moon
           size={16}
@@ -39,7 +39,7 @@ export const ThemeToggle = () => {
         />
       </div>
 
-      {/* Sun (right) */}
+      {/* Sun (RIGHT) */}
       <div className="z-10 w-7 h-7 flex items-center justify-center">
         <Sun
           size={16}
