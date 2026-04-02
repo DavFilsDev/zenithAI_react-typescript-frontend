@@ -11,9 +11,11 @@ export const ThemeToggle = () => {
       onClick={toggleTheme}
       className="
         relative w-16 h-9 rounded-full p-1
-        bg-white/10 dark:bg-white/5
-        backdrop-blur-md border border-white/20 dark:border-white/10
+        bg-red-200 dark:bg-white/5
+        border border-gray-400 dark:border-white/10
+        backdrop-blur-md
         flex items-center justify-between
+        transition-all duration-300
       "
     >
       {/* Sliding background (FIXED direction) */}
