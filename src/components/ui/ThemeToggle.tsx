@@ -13,40 +13,39 @@ export const ThemeToggle = () => {
         relative w-16 h-9 rounded-full p-1
         bg-white/10 dark:bg-white/5
         backdrop-blur-md border border-white/20 dark:border-white/10
-        flex items-center
+        flex items-center justify-between
         transition-all duration-300 ease-in-out
       "
     >
-      {/* Sliding circle */}
+      {/* Sliding background */}
       <div
         className={`
           absolute top-1 left-1 w-7 h-7 rounded-full
-          flex items-center justify-center
-          shadow-md
           transition-all duration-300 ease-in-out
-          ${isDark ? 'translate-x-7 bg-[rgb(var(--color-primary))]' : 'translate-x-0 bg-yellow-400'}
+          shadow-md flex items-center justify-center
+          ${isDark 
+            ? 'translate-x-7 bg-[rgb(var(--color-primary))]' 
+            : 'translate-x-0 bg-yellow-400'}
         `}
-      >
-        {isDark ? (
-          <Moon size={16} className="text-white" />
-        ) : (
-          <Sun size={16} className="text-white" />
-        )}
-      </div>
+      />
 
-      {/* Background icons */}
-      <div className="flex justify-between w-full px-1">
+      {/* Moon (left) */}
+      <div className="z-10 w-7 h-7 flex items-center justify-center">
         <Moon
-          size={14}
-          className={`transition-opacity duration-300 ${
-            isDark ? 'opacity-0' : 'opacity-60'
+          size={16}
+          className={`transition-colors duration-300 ${
+            isDark ? 'text-white' : 'text-gray-400'
           }`}
         />
+      </div>
+
+      {/* Sun (right) */}
+      <div className="z-10 w-7 h-7 flex items-center justify-center">
         <Sun
-          size={14}
-          className={`transition-opacity duration-300 ${
-            isDark ? 'opacity-60' : 'opacity-0'
-          } text-yellow-400`}
+          size={16}
+          className={`transition-colors duration-300 ${
+            !isDark ? 'text-white' : 'text-yellow-400'
+          }`}
         />
       </div>
     </button>
