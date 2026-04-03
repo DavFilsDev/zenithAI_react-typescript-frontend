@@ -36,8 +36,6 @@ export const Register = () => {
         username: data.username,
         password: data.password,
         password2: data.password2,
-        firstName: data.firstName,
-        lastName: data.lastName,
       });
       toast.success('Registered successfully!');
       navigate('/chat');
@@ -68,21 +66,6 @@ export const Register = () => {
         {/* Form placeholder */}
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
           {/* First Name (optional) */}
-          <Input
-            label="First Name (Optional)"
-            type="text"
-            placeholder="Enter your first name"
-            registration={register('firstName')}
-            error={errors.firstName?.message}
-          />
-
-          <Input
-            label="Last Name (Optional)"
-            type="text"
-            placeholder="Enter your last name"
-            registration={register('lastName')}
-            error={errors.lastName?.message}
-          />
 
           <Input
             label="Email"
@@ -135,11 +118,11 @@ export const Register = () => {
             label="Confirm Password"
             type="password"
             placeholder="Confirm your password"
-            registration={register('confirmPassword', {
+            registration={register('password2', {
               required: 'Please confirm your password',
               validate: value => value === password || 'Passwords do not match',
             })}
-            error={errors.confirmPassword?.message}
+            error={errors.password2?.message}
           />
 
           <Button type="submit" loading={loading}>
