@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface LoginForm {
   email: string;
@@ -12,7 +12,7 @@ interface LoginForm {
 }
 
 export const Login = () => {
-  const { login, user } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -23,17 +23,13 @@ export const Login = () => {
     formState: { errors } 
   } = useForm<LoginForm>();
 
-  useEffect(() => {
-    if (user) {
-      toast.success('Logged in successfully!');
-      navigate('/chat');
-    }
-  }, [user, navigate]);
-
   const onSubmit = async (data: LoginForm) => {
     try {
       setLoading(true);
       await login(data);
+
+      toast.success('Logged in successfully!');
+      navigate('/chat');
     } catch (error) {
       toast.error('Invalid credentials');
       setLoading(false);
