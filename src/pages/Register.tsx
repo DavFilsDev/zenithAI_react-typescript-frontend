@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 interface RegisterForm {
   email: string;
+  username: string; 
   password: string;
   confirmPassword: string;
   firstName?: string;
@@ -32,7 +33,9 @@ export const Register = () => {
       setLoading(true);
       await registerUser({
         email: data.email,
+        username: data.username,
         password: data.password,
+        confirmPassword: data.confirmPassword,
         firstName: data.firstName,
         lastName: data.lastName,
       });
@@ -93,6 +96,28 @@ export const Register = () => {
               },
             })}
             error={errors.email?.message}
+          />
+
+          <Input
+            label="Username"
+            type="text"
+            placeholder="Choose a username"
+            registration={register('username', {
+              required: 'Username is required',
+              minLength: {
+                value: 3,
+                message: 'Username must be at least 3 characters',
+              },
+              maxLength: {
+                value: 20,
+                message: 'Username must be less than 20 characters',
+              },
+              pattern: {
+                value: /^[a-zA-Z0-9_]+$/,
+                message: 'Only letters, numbers, and underscores allowed',
+              },
+            })}
+            error={errors.username?.message}
           />
 
           <Input
