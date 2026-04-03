@@ -2,10 +2,10 @@ export interface User {
   id: string;
   email: string;
   username: string;
+  credits?: number;
+  is_premium?: boolean;
   firstName?: string;
   lastName?: string;
-  credits?: number;
-  isPremium?: boolean;
 }
 
 export interface AuthResponse {
@@ -20,8 +20,8 @@ export interface LoginCredentials {
 }
 
 export interface RegisterCredentials extends LoginCredentials {
+  email: string;
   username: string;
+  password: string;
   password2: string; 
-  firstName?: string;
-  lastName?: string; 
 }
