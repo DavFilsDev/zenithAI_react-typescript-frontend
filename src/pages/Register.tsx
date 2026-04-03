@@ -10,7 +10,7 @@ interface RegisterForm {
   email: string;
   username: string; 
   password: string;
-  confirmPassword: string;
+  password2: string;
   firstName?: string;
   lastName?: string;
 }
@@ -35,7 +35,7 @@ export const Register = () => {
         email: data.email,
         username: data.username,
         password: data.password,
-        confirmPassword: data.confirmPassword,
+        password2: data.password2,
         firstName: data.firstName,
         lastName: data.lastName,
       });
