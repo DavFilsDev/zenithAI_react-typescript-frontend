@@ -12,8 +12,20 @@ export const authService = {
   },
 
   async register(credentials: RegisterCredentials): Promise<AuthResponse> {
-    const response = await api.post('/auth/register/', credentials);
- 
+    const backendData = {
+      email: credentials.email,
+      username: credentials.username,
+      password: credentials.password,
+      password2: credentials.password2,
+    };
+    
+    const response = await api.post('/auth/register/', backendData);
+    
+    if (response.data.access && response.data.refresh) {
+      localStorage.setItem('accessToken', response.data.access);
+      localStorage.setItem('refreshToken', response.data.refresh);
+    }
+    
     return response.data;
   },
 
