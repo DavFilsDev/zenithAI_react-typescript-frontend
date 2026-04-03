@@ -1,6 +1,7 @@
 export interface User {
   id: string;
   email: string;
+  username: string;
   firstName?: string;
   lastName?: string;
   credits?: number;
@@ -19,6 +20,8 @@ export interface LoginCredentials {
 }
 
 export interface RegisterCredentials extends LoginCredentials {
+  username: string;
+  password2: string; 
   firstName?: string;
   lastName?: string; 
 }
