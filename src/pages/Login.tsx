@@ -26,14 +26,22 @@ export const Login = () => {
   const onSubmit = async (data: LoginForm) => {
     try {
       setLoading(true);
+      const user = await login(data);
 
-      await login(data);
-
-      toast.success('Logged in successfully!');
-      navigate('/chat');
-
-    } catch (error) {
-      toast.error('Invalid credentials');
+      if (user) {
+        toast.success(`Welcome back, ${user.username || user.email}!`);
+        navigate('/chat', { replace: true });
+      }
+    } catch (error: any) {
+      console.error('Login error:', error);
+      
+      if (error.response?.status === 401) {
+        toast.error('Invalid email or password');
+      } else if (error.response?.data?.detail) {
+        toast.error(error.response.data.detail);
+      } else {
+        toast.error('Login failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }

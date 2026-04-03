@@ -3,20 +3,60 @@ import type { LoginCredentials, RegisterCredentials, AuthResponse, User } from '
 
 export const authService = {
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
-    const response = await api.post('/auth/token/', credentials);
-    
-    localStorage.setItem('accessToken', response.data.access);
-    localStorage.setItem('refreshToken', response.data.refresh);
-    
-    return response.data;
+    try {
+      const response = await api.post('/auth/token/', credentials);
+
+      const { access, refresh } = response.data;
+      
+      if (!response.data.access || !response.data.refresh) {
+        throw new Error('Invalid response from server');
+      }
+      
+      localStorage.setItem('accessToken', response.data.access);
+      localStorage.setItem('refreshToken', response.data.refresh);
+
+      const userResponse = await api.get('/auth/profile/');
+      
+      return {
+        access: access,
+        refresh: refresh,
+        user: userResponse.data,
+      };
+    } catch (error: any) {
+      console.error('Login API error:', error);
+      throw error;
+    }
   },
 
   async register(credentials: RegisterCredentials): Promise<AuthResponse> {
-    const response = await api.post('/auth/register/', credentials);
- 
-    return response.data;
+    const backendData = {
+      email: credentials.email,
+      username: credentials.username,
+      password: credentials.password,
+      password2: credentials.password2,
+    };
+    
+    const response = await api.post('/auth/register/', backendData);
+    
+    if (response.data.access && response.data.refresh) {
+      localStorage.setItem('accessToken', response.data.access);
+      localStorage.setItem('refreshToken', response.data.refresh);
+      
+      const userResponse = await api.get('/auth/profile/');
+      return {
+        access: response.data.access,
+        refresh: response.data.refresh,
+        user: userResponse.data,
+      };
+    }
+    
+    return {
+      access: '',
+      refresh: '',
+      user: response.data,
+    };
   },
-
+  
   async getProfile(): Promise<User> {
     const response = await api.get('/auth/profile/');
     return response.data;
