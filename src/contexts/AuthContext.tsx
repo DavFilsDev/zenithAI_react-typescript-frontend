@@ -5,8 +5,8 @@ import { authService } from '../services/auth';
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
-  login: (credentials: LoginCredentials) => Promise<void>;
-  register: (credentials: RegisterCredentials) => Promise<void>;
+  login: (credentials: LoginCredentials) => Promise<User>;
+  register: (credentials: RegisterCredentials) => Promise<User>;
   logout: () => void;
 }
 
@@ -40,11 +40,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (credentials: LoginCredentials) => {
     const response = await authService.login(credentials);
     setUser(response.user);
+    return response.user;
   };
 
   const register = async (credentials: RegisterCredentials) => {
     const response = await authService.register(credentials);
     setUser(response.user);
+    return response.user;
   };
 
   const logout = () => {
