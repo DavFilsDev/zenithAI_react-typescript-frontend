@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useChatStore } from '../store/chatStore';
 import { Sidebar } from '../components/layout/Sidebar';
-import { ChatWindow } from '../components/chat/ChatWindow';
+import { ChatWindow } from '../components/layout/ChatWindow';
 import { FiMessageSquare } from 'react-icons/fi';
 
 export const Chat: React.FC = () => {
