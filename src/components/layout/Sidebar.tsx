@@ -31,12 +31,17 @@ export const Sidebar: React.FC = () => {
   };
 
   return (
-    <div className="w-64 bg-gray-900 text-white h-screen flex flex-col">
+    <div className="w-64 bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] border-r border-white/10 h-screen flex flex-col">
       {/* New Chat Button */}
       <div className="p-4">
         <button
           onClick={handleNewChat}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-3 flex items-center justify-center gap-2 transition-colors duration-200"
+          className="
+                    w-full flex items-center justify-center gap-2
+                    bg-[rgb(var(--color-primary))]
+                    text-white rounded-xl p-3
+                    hover:opacity-90 transition
+                    "
         >
           <FiPlus size={20} />
           <span>New Chat</span>
@@ -56,7 +61,11 @@ export const Sidebar: React.FC = () => {
             <div
               key={conversation.id}
               onClick={() => handleConversationClick(conversation.id)}
-              className="p-3 hover:bg-gray-800 cursor-pointer border-b border-gray-800 group relative transition-colors duration-200"
+              className="
+                        p-3 cursor-pointer rounded-xl
+                        hover:bg-white/10 dark:hover:bg-white/5
+                        transition-all duration-200
+                        "
             >
               {/* Conversation title */}
               <div className="font-medium truncate pr-8">
@@ -110,7 +119,7 @@ export const Sidebar: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* User avatar and info */}
           <div className="flex items-center gap-2 min-w-0">
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 bg-[rgb(var(--color-primary))] rounded-full flex items-center justify-center flex-shrink-0">
               {user?.email?.[0].toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">

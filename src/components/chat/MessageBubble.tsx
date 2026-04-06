@@ -16,8 +16,8 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       <div
         className={`max-w-[70%] rounded-lg p-4 ${
           isUser
-            ? 'bg-blue-600 text-white'
-            : 'bg-gray-200 text-gray-900'
+            ? 'bg-[rgb(var(--color-primary))] text-white'
+            : 'bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/10'
         }`}
       >
         
