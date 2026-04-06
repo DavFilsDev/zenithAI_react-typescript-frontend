@@ -19,11 +19,16 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   disabled,
 }) => {
   return (
-    <div className="flex-1 flex flex-col h-full bg-gray-50">
+    <div className="flex-1 flex flex-col h-full bg-[rgb(var(--color-bg))]">
       {/* Header */}
-      <div className="bg-white border-b p-4">
-        <h2 className="text-lg font-semibold text-gray-800">
-          Chat
+      <div className="
+        p-4 border-b
+        bg-white/10 dark:bg-white/5
+        backdrop-blur-md
+        border-white/10
+      ">
+        <h2 className="font-semibold">
+          ZenithAI Chat
         </h2>
       </div>
 

@@ -119,7 +119,7 @@ export const Sidebar: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* User avatar and info */}
           <div className="flex items-center gap-2 min-w-0">
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 bg-[rgb(var(--color-primary))] rounded-full flex items-center justify-center flex-shrink-0">
               {user?.email?.[0].toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">
