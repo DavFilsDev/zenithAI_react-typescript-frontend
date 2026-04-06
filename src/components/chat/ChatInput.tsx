@@ -45,7 +45,15 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
         placeholder={disabled ? "Please wait..." : "Type your message..."}
         disabled={disabled}
         rows={1}
-        className="flex-1 resize-none rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+        className="
+          flex-1 resize-none rounded-xl p-3
+          bg-white/10 dark:bg-white/5
+          border border-white/20 dark:border-white/10
+          backdrop-blur-md
+          focus:outline-none
+          focus:ring-2 focus:ring-[rgb(var(--color-primary))]
+          disabled:opacity-50
+        "
         style={{ 
           minHeight: '44px', 
           maxHeight: '120px',
@@ -57,7 +65,14 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
       <button
         type="submit"
         disabled={disabled || !message.trim()}
-        className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
+        className="
+          p-3 rounded-xl
+          bg-[rgb(var(--color-primary))]
+          text-white
+          hover:opacity-90
+          transition
+          flex items-center justify-center
+        "
         title="Send message (Enter)"
       >
         <IoSend size={20} />
