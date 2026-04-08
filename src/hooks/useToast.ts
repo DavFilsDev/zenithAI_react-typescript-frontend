@@ -1,5 +1,5 @@
 import { toast } from 'react-hot-toast';
-import { toastConfig, formatToastMessage } from '@/config/toastConfig';
+import { toastConfig, formatToastMessage } from '../config/toastConfig';
 
 export const useToast = () => {
   const showSuccess = (message: string, duration?: number) => {

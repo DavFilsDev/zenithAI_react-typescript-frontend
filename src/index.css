@@ -50,3 +50,48 @@ body {
     rgb(var(--color-primary-dark))
   );
 }
+
+/* Custom toast animations */
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.go-toast {
+  animation: toast-slide-in 0.2s ease-out !important;
+}
+
+.go-toast-exit {
+  animation: toast-slide-out 0.2s ease-in !important;
+}
+
+.go-toast .go-toast-body {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Responsive: Allow wrapping on very small screens */
+@media (max-width: 640px) {
+  .go-toast .go-toast-body {
+    white-space: normal !important;
+    max-width: 250px;
+  }
+}
