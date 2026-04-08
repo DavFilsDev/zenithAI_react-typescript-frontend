@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { useState } from 'react';
+import { CardHeader } from '../components/ui/CardHeader';
 
 interface RegisterForm {
   email: string;
@@ -56,12 +57,7 @@ export const Register = () => {
                 rounded-2xl
                 shadow-xl">
         {/* Header */}
-        <h2 className="text-2xl md:text-3xl font-bold text-center">
-          Create account on
-          <span className="text-[rgb(var(--color-primary))] ml-1">
-            ZenithAI
-          </span>
-        </h2>
+        <CardHeader phrase="Create your account" />
 
         {/* Form placeholder */}
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
