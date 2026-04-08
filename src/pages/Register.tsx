@@ -57,7 +57,7 @@ export const Register = () => {
                 rounded-2xl
                 shadow-xl">
         {/* Header */}
-        <CardHeader phrase="Create your account" />
+        <CardHeader phrase="Create your account and join the most advanced AI coding platform!" />
 
         {/* Form placeholder */}
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
