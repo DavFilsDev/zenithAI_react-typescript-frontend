@@ -79,6 +79,5 @@ export const authService = {
 
   logout(): void {
     tokenManager.clearTokens();
-    window.location.href = '/login';
   },
 };
