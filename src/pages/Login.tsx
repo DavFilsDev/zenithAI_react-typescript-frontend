@@ -62,8 +62,8 @@ export const Login = () => {
                 shadow-xl">
         
         {/* Header */}
-        <CardHeader phrase="Welcome back!" />
-        
+        <CardHeader phrase="Welcome back to your smart coding companion!" />
+
         {/* Login form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           
