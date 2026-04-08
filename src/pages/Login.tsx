@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { useState } from 'react';
+import { CardHeader } from '../components/ui/CardHeader';
 
 interface LoginForm {
   email: string;
@@ -61,12 +62,7 @@ export const Login = () => {
                 shadow-xl">
         
         {/* Header */}
-        <h2 className="text-2xl md:text-3xl font-bold text-center">
-          Welcome back to 
-          <span className="text-[rgb(var(--color-primary))] ml-1">
-            ZenithAI
-          </span>
-        </h2>
+        <CardHeader phrase="Welcome back!" />
         
         {/* Login form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
