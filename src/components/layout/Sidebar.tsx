@@ -3,14 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { FiPlus, FiLogOut, FiTrash2, FiMessageSquare, FiSun, FiMoon } from 'react-icons/fi';
+import { FiPlus, FiTrash2, FiMessageSquare, FiSun, FiMoon } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
+import { useToast } from '../../hooks/useToast';
+import { LogOut } from 'lucide-react';
+
 
 export const Sidebar: React.FC = () => {
   const { conversations, loadConversation, deleteConversation, clearCurrentConversation } = useChatStore();
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
+  const { showSuccess } = useToast();
 
   const handleNewChat = () => {
     clearCurrentConversation();
@@ -28,6 +32,12 @@ export const Sidebar: React.FC = () => {
     if (window.confirm('Are you sure you want to delete this conversation?')) {
       await deleteConversation(id);
     }
+  };
+
+  const handleLogout = () => {
+    const username = user?.username || user?.email || 'User';
+    logout();
+    showSuccess(`You are lougout successfully! See you soon ${username}!. `);
   };
 
   return (
@@ -132,11 +142,11 @@ export const Sidebar: React.FC = () => {
           
           {/* Logout button */}
           <button
-            onClick={logout}
+            onClick={handleLogout}
             className="p-2 hover:bg-gray-800 rounded-lg transition-colors duration-200 flex-shrink-0"
             title="Logout"
           >
-            <FiLogOut size={18} />
+            <LogOut className="w-5 h-5" />
           </button>
         </div>
       </div>
