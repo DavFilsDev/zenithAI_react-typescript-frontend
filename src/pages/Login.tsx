@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { useState } from 'react';
 import { CardHeader } from '../components/ui/CardHeader';
 import { ApiError } from '../services/apiError';
+import { useToast } from '../hooks/useToast';
 
 interface LoginForm {
   email: string;
@@ -18,6 +18,8 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
+
+  const { showSuccess, showError } = useToast();
   
   const { 
     register, 
@@ -31,7 +33,7 @@ export const Login = () => {
       const user = await login(data);
 
       if (user) {
-        toast.success(`Welcome back, ${user.username || user.email}!`);
+        showSuccess(`Welcome back, ${user.username || user.email}!`);
         navigate('/chat', { replace: true });
       }
     } catch (error: unknown) {
@@ -39,16 +41,16 @@ export const Login = () => {
       
       if (error instanceof ApiError) {
         if (error.isUnauthorized()) {
-          toast.error('Invalid email or password. Please try again.');
+          showError('Invalid email or password. Please try again.');
         } else if (error.isBadRequest()) {
-          toast.error('Invalid request format. Please check your input.');
+          showError('Invalid request format. Please check your input.');
         } else {
-          toast.error(error.message || 'Login failed. Please try again.');
+          showError(error.message || 'Login failed. Please try again.');
         }
       } else if (error instanceof Error) {
-        toast.error(error.message);
+        showError(error.message);
       } else {
-        toast.error('Login failed. Please try again.');
+        showError('Login failed. Please try again.');
       }
     } finally {
       setLoading(false);
