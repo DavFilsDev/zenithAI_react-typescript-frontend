@@ -53,7 +53,7 @@ function App() {
           <Toaster
             position="top-right"
             toastOptions={{
-              duration: 4000,
+              duration: 5000,
               style: {
                 background: 'rgba(2, 6, 23, 0.8)',
                 color: 'white',
@@ -70,7 +70,7 @@ function App() {
                 boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
               },
               success: {
-                duration: 3000,
+                duration: 5000,
                 style: {
                   background: 'rgba(34, 197, 94, 0.12)',
                   border: '1px solid rgba(34, 197, 94, 0.35)',
