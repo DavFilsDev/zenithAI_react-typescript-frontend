@@ -1,55 +1,61 @@
 import axios from 'axios';
+import { tokenManager } from './tokenManager';
+import { refreshTokenService } from './refreshTokenService';
+import { isAuthEndpoint } from '../types/auth';
+import { ApiError } from './apiError';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  timeout: 30000,
 });
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('accessToken');
+    const token = tokenManager.getAccessToken();
     
-    if (token) {
+    if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     
     return config;
   },
   (error) => {
-    return Promise.reject(error);
+    return Promise.reject(ApiError.fromAxiosError(error));
   }
 );
 
 api.interceptors.response.use(
   (response) => response,
-  
   async (error) => {
     const originalRequest = error.config;
     
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    if (isAuthEndpoint(originalRequest?.url)) {
+      return Promise.reject(ApiError.fromAxiosError(error));
+    }
+    
+    if (originalRequest?._retry) {
+      tokenManager.clearTokens();
+      window.location.href = '/login';
+      return Promise.reject(ApiError.fromAxiosError(error));
+    }
+    
+    if (error.response?.status === 401 && tokenManager.hasValidTokens()) {
       originalRequest._retry = true;
       
       try {
-        const refresh = localStorage.getItem('refreshToken');
-        
-        const response = await axios.post(
-          `${import.meta.env.VITE_API_URL}/auth/token/refresh/`,
-          { refresh }
-        );
-        
-        localStorage.setItem('accessToken', response.data.access);
-        
-        api.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
-        
+        await refreshTokenService.refresh();
         return api(originalRequest);
       } catch (refreshError) {
+        tokenManager.clearTokens();
         window.location.href = '/login';
+        return Promise.reject(ApiError.fromAxiosError(refreshError));
       }
     }
     
-    return Promise.reject(error);
+    return Promise.reject(ApiError.fromAxiosError(error));
   }
 );
 
