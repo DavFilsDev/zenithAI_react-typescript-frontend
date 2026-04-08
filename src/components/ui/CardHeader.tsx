@@ -8,7 +8,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ phrase }) => {
       <h1 className="text-3xl font-bold tracking-wide">
         Zenith<span className="text-[rgb(var(--color-primary))]">AI</span>
       </h1>
-      <p className="text-lg mt-1 text-gray-500 dark:text-gray-400">
+      <p className="text-sm mt-1 text-gray-500 dark:text-gray-100">
         {phrase}
       </p>
     </div>
