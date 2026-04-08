@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 interface CardHeaderProps {
   phrase: string;
 }
@@ -5,12 +7,14 @@ interface CardHeaderProps {
 export const CardHeader: React.FC<CardHeaderProps> = ({ phrase }) => {
   return (
     <div className="text-center mb-4">
-      <h1 className="text-3xl font-bold tracking-wide">
-        Zenith<span className="text-[rgb(var(--color-primary))]">AI</span>
-      </h1>
-      <p className="text-sm mt-1 text-gray-500 dark:text-gray-100">
-        {phrase}
-      </p>
+       <Link to="/">
+            <h1 className="text-3xl font-bold tracking-wide cursor-pointer">
+            Zenith<span className="text-[rgb(var(--color-primary))]">AI</span>
+            </h1>
+        </Link>
+        <p className="text-sm mt-1 text-gray-500 dark:text-gray-100">
+            {phrase}
+        </p>
     </div>
   );
 };
