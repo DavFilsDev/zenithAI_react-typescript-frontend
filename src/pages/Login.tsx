@@ -6,6 +6,7 @@ import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { useState } from 'react';
 import { CardHeader } from '../components/ui/CardHeader';
+import { ApiError } from '../services/apiError';
 
 interface LoginForm {
   email: string;
@@ -33,13 +34,19 @@ export const Login = () => {
         toast.success(`Welcome back, ${user.username || user.email}!`);
         navigate('/chat', { replace: true });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Login error:', error);
       
-      if (error.response?.status === 401) {
-        toast.error('Invalid email or password');
-      } else if (error.response?.data?.detail) {
-        toast.error(error.response.data.detail);
+      if (error instanceof ApiError) {
+        if (error.isUnauthorized()) {
+          toast.error('Invalid email or password. Please try again.');
+        } else if (error.isBadRequest()) {
+          toast.error('Invalid request format. Please check your input.');
+        } else {
+          toast.error(error.message || 'Login failed. Please try again.');
+        }
+      } else if (error instanceof Error) {
+        toast.error(error.message);
       } else {
         toast.error('Login failed. Please try again.');
       }
