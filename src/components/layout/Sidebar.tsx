@@ -37,7 +37,7 @@ export const Sidebar: React.FC = () => {
   const handleLogout = () => {
     const username = user?.username || user?.email || 'User';
     logout();
-    showSuccess(`Goodbye, ${username}! See you soon. 👋`);
+    showSuccess(`You are lougout successfully! See you soon ${username}!. `);
   };
 
   return (
