@@ -1,4 +1,4 @@
-import { toast, ToastOptions } from 'react-hot-toast';
+import { toast, type ToastOptions } from 'react-hot-toast';
 
 export const toastConfig: Record<string, ToastOptions> = {
   success: {
