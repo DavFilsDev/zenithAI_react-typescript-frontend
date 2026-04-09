@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { FiPlus, FiTrash2, FiMessageSquare, FiSun, FiMoon, FiMenu } from 'react-icons/fi';
+import { FiPlus, FiTrash2, FiMessageSquare, FiSun, FiMoon, FiSidebar } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
 import { LogOut } from 'lucide-react';
@@ -70,9 +70,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           <button
             onClick={onToggle}
             className="p-2 mx-auto mt-2 rounded-lg hover:bg-white/10 transition-all duration-200"
-            title="Open sidebar"
+            title="Expand sidebar"
           >
-            <FiMenu size={20} />
+            <FiSidebar size={20} className="rotate-180" />
           </button>
         </div>
       )}
