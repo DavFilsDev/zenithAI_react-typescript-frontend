@@ -8,8 +8,12 @@ import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
 import { LogOut } from 'lucide-react';
 
+interface SidebarProps {
+  isOpen: boolean;
+  onToggle: () => void;
+}
 
-export const Sidebar: React.FC = () => {
+export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const { conversations, loadConversation, deleteConversation, clearCurrentConversation } = useChatStore();
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
