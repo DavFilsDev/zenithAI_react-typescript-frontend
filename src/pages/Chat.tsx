@@ -33,7 +33,7 @@ export const Chat: React.FC = () => {
   if (!currentConversation) {
     return (
       <div className="flex h-screen">
-          <Sidebar 
+        <Sidebar 
           isOpen={isSidebarOpen} 
           onToggle={() => setIsSidebarOpen(!isSidebarOpen)} 
         />
@@ -69,10 +69,11 @@ export const Chat: React.FC = () => {
 
   return (
     <div className="flex h-screen">
-      {/* Sidebar with conversation list */}
-      <Sidebar />
+      <Sidebar 
+        isOpen={isSidebarOpen} 
+        onToggle={() => setIsSidebarOpen(!isSidebarOpen)} 
+      />
       
-      {/* Main chat area using our ChatWindow component */}
       <div className="flex-1">
         <ChatWindow
           messages={currentConversation.messages}
