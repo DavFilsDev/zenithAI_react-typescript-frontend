@@ -89,28 +89,32 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               onClick={handleNewChat}
               className="
                 group relative w-full flex items-center justify-center gap-2
-                bg-[rgb(var(--color-primary))/15]
-                backdrop-blur-md
+                bg-[rgb(var(--color-primary))/12]
+                backdrop-blur-sm
                 border-2 border-[rgb(var(--color-primary))]
                 text-[rgb(var(--color-primary))]
-                rounded-xl py-2 px-2
-                hover:shadow-xl hover:shadow-[rgb(var(--color-primary))/20]
+                font-semibold
+                rounded-xl py-2 px-1
+                hover:shadow-xl hover:shadow-[rgb(var(--color-primary))/30]
                 hover:scale-[1.02] active:scale-[0.98]
                 hover:bg-[rgb(var(--color-primary))/20]
                 transition-all duration-300 ease-out
                 overflow-hidden
               "
+              style={{
+                textShadow: '0 0 2px rgba(0,0,0,0.2)',
+                WebkitFontSmoothing: 'antialiased'
+              }}
             >
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full 
-                              transition-transform duration-1000 bg-gradient-to-r from-transparent 
-                              via-[rgb(var(--color-primary))/20] to-transparent" />
-                              
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform 
+                              duration-1000 bg-gradient-to-r from-transparent via-[rgb(var(--color-primary))/25] to-transparent" />
               <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+              
               <FiPlus 
-                size={20} 
+                size={18} 
                 className="transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" 
               />
-              <span className="text-sm font-semibold tracking-wide">New Chat</span>
+              <span className="text-sm font-bold tracking-wide">New Chat</span>
             </button>
           </div>
 
