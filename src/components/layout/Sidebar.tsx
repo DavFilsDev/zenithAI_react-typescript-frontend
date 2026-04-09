@@ -87,10 +87,27 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           <div className="p-4">
             <button
               onClick={handleNewChat}
-              className="w-full flex items-center justify-center gap-2 bg-[rgb(var(--color-primary))] text-white rounded-xl p-3 hover:opacity-90 transition"
+              className="
+                group relative w-full flex items-center justify-center gap-2
+                bg-gradient-to-br from-[rgb(var(--color-primary))] to-[rgb(var(--color-primary-dark))]
+                text-white rounded-xl p-3
+                hover:shadow-xl hover:shadow-[rgb(var(--color-primary))/20]
+                hover:scale-[1.02] active:scale-[0.98]
+                transition-all duration-300 ease-out
+                overflow-hidden
+              "
             >
-              <FiPlus size={20} />
-              <span>New Chat</span>
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              
+              {/* Pulsing dot indicator */}
+              <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+              
+              <FiPlus 
+                size={18} 
+                className="transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" 
+              />
+              <span className="text-sm font-semibold tracking-wide">New Chat</span>
             </button>
           </div>
 
