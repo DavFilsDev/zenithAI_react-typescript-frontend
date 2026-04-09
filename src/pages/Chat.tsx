@@ -1,4 +1,4 @@
-import React, { useEffect , useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useChatStore } from '../store/chatStore';
 import { Sidebar } from '../components/layout/Sidebar';
@@ -32,12 +32,12 @@ export const Chat: React.FC = () => {
 
   if (!currentConversation) {
     return (
-      <div className="flex h-screen">
+      <div className="flex h-screen overflow-hidden">
         <Sidebar 
           isOpen={isSidebarOpen} 
           onToggle={() => setIsSidebarOpen(!isSidebarOpen)} 
         />
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center overflow-auto">
           <div className="text-center max-w-md p-8
             bg-white/10 dark:bg-white/5
             backdrop-blur-md border border-white/20 dark:border-white/10
@@ -68,13 +68,13 @@ export const Chat: React.FC = () => {
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
       <Sidebar 
         isOpen={isSidebarOpen} 
         onToggle={() => setIsSidebarOpen(!isSidebarOpen)} 
       />
       
-      <div className="flex-1">
+      <div className="flex-1 overflow-auto">
         <ChatWindow
           messages={currentConversation.messages}
           onSendMessage={handleSendMessage}
