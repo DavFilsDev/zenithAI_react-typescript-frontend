@@ -95,3 +95,27 @@ body {
     max-width: 250px;
   }
 }
+
+/* Sidebar transition animations */
+.sidebar-transition {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Optional: Add hover effect on collapsed sidebar */
+.sidebar-collapsed:hover {
+  width: 64px;
+}
+
+/* Smooth fade for content when sidebar toggles */
+.sidebar-content {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
