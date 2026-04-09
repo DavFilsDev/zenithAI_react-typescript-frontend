@@ -89,22 +89,25 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               onClick={handleNewChat}
               className="
                 group relative w-full flex items-center justify-center gap-2
-                bg-gradient-to-br from-[rgb(var(--color-primary))] to-[rgb(var(--color-primary-dark))]
-                text-white rounded-xl p-3
+                bg-[rgb(var(--color-primary))/15]
+                backdrop-blur-md
+                border-2 border-[rgb(var(--color-primary))]
+                text-[rgb(var(--color-primary))]
+                rounded-xl py-2 px-2
                 hover:shadow-xl hover:shadow-[rgb(var(--color-primary))/20]
                 hover:scale-[1.02] active:scale-[0.98]
+                hover:bg-[rgb(var(--color-primary))/20]
                 transition-all duration-300 ease-out
                 overflow-hidden
               "
             >
-              {/* Shimmer effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-              
-              {/* Pulsing dot indicator */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full 
+                              transition-transform duration-1000 bg-gradient-to-r from-transparent 
+                              via-[rgb(var(--color-primary))/20] to-transparent" />
+                              
               <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-              
               <FiPlus 
-                size={18} 
+                size={20} 
                 className="transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" 
               />
               <span className="text-sm font-semibold tracking-wide">New Chat</span>
