@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
@@ -8,6 +8,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
 import { SidebarHeader } from '../ui/SidebarHeader';
 import { SettingsDropdown } from '../ui/SettingsDropdown';
+import { UserButton } from '../ui/UserButton';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -20,6 +21,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const { showSuccess } = useToast();
+
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const handleNewChat = () => {
     clearCurrentConversation();
@@ -185,6 +188,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               theme={theme}
               onToggleTheme={toggleTheme}
               onLogout={handleLogout}
+            />
+            <UserButton
+              username={user?.username || user?.email?.split('@')[0]}
+              onClick={() => setIsProfileModalOpen(true)}
             />
           </div>
 
