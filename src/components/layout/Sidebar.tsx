@@ -9,6 +9,7 @@ import { useToast } from '../../hooks/useToast';
 import { SidebarHeader } from '../ui/SidebarHeader';
 import { SettingsDropdown } from '../ui/SettingsDropdown';
 import { UserButton } from '../ui/UserButton';
+import { UserProfileModal } from '../ui/UserProfileModal';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -46,6 +47,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
     const username = user?.username || user?.email || 'User';
     logout();
     showSuccess(`You are logged out successfully! See you soon ${username}!`);
+  };
+
+  const handleUpdateEmail = async (email: string) => {
+    // Implement API call to update email
+    console.log('Update email:', email);
+  };
+
+  const handleUpdateUsername = async (username: string) => {
+    // Implement API call to update username
+    console.log('Update username:', username);
+  };
+
+  const handleUpdatePassword = async (oldPassword: string, newPassword: string) => {
+    // Implement API call to update password
+    console.log('Update password');
   };
 
   useEffect(() => {
@@ -194,6 +210,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               onClick={() => setIsProfileModalOpen(true)}
             />
           </div>
+
+          <UserProfileModal
+            isOpen={isProfileModalOpen}
+            onClose={() => setIsProfileModalOpen(false)}
+            user={{
+              email: user?.email || '',
+              username: user?.username || '',
+              credits: user?.credits || 0,
+            }}
+            onUpdateEmail={handleUpdateEmail}
+            onUpdateUsername={handleUpdateUsername}
+            onUpdatePassword={handleUpdatePassword}
+          />
 
         </div>
       )}
