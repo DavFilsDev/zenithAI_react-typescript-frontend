@@ -4,9 +4,26 @@ import { FiUser } from 'react-icons/fi';
 interface UserButtonProps {
   username?: string;
   onClick: () => void;
+  variant?: 'full' | 'icon';
 }
 
-export const UserButton: React.FC<UserButtonProps> = ({ username, onClick }) => {
+export const UserButton: React.FC<UserButtonProps> = ({ 
+  username, 
+  onClick, 
+  variant = 'full' 
+}) => {
+  if (variant === 'icon') {
+    return (
+      <button
+        onClick={onClick}
+        className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-white/10 transition-all duration-200"
+        title="Profile"
+      >
+        <FiUser size={20} />
+      </button>
+    );
+  }
+
   return (
     <button
       onClick={onClick}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { FiPlus, FiTrash2, FiMessageSquare, FiSidebar } from 'react-icons/fi';
+import { FiPlus, FiTrash2, FiMessageSquare, FiSidebar, FiSettings, FiUser } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
 import { SidebarHeader } from '../ui/SidebarHeader';
@@ -120,6 +120,25 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
                 size={20} 
                 className="transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" 
               />
+            </button>
+          </div>
+
+          {/* Collapsed Sidebar - Settings and User */}
+          <div className="p-3 space-y-3 mb-4">
+            <button
+              onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+              className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-white/10 transition-all duration-200"
+              title="Settings"
+            >
+              <FiSettings size={20} />
+            </button>
+            
+            <button
+              onClick={() => setIsProfileModalOpen(true)}
+              className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-white/10 transition-all duration-200"
+              title="Profile"
+            >
+              <FiUser size={20} />
             </button>
           </div>
         </div>
