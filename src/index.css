@@ -120,18 +120,31 @@ body {
   }
 }
 
-/* Slide up animation for dropdown */
-@keyframes slideUp {
+/* Modal animations */
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-.animate-slide-up {
-  animation: slideUp 0.2s ease-out;
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.2s ease-out;
 }
