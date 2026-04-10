@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiX, FiMail, FiUser, FiCoins, FiLock, FiSave } from 'react-icons/fi';
+import { FiX, FiMail, FiUser, FiCreditCard, FiLock } from 'react-icons/fi';
 
 interface UserProfileModalProps {
   isOpen: boolean;
@@ -193,7 +193,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           {/* Credits Field (Read Only) */}
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-400 flex items-center gap-2">
-              <FiCoins size={14} /> Credits
+              <FiCreditCard size={14} /> Credits
             </label>
             <div className="px-3 py-2 bg-white/5 border border-white/10 rounded-lg">
               {user.credits} credits available
