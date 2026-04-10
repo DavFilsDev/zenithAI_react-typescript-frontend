@@ -123,6 +123,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             </button>
           </div>
 
+          <div className="p-3 space-y-3 mb-4">
+            <SettingsDropdown
+              theme={theme}
+              onToggleTheme={toggleTheme}
+              onLogout={handleLogout}
+              variant="icon"
+            />
+            <UserButton
+              variant="icon"
+              onClick={() => setIsProfileModalOpen(true)}
+            />
+          </div>
+
         </div>
       )}
 
