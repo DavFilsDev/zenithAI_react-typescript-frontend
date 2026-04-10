@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
+import { useTheme } from '../../contexts/ThemeContext';
 import { FiPlus, FiTrash2, FiMessageSquare, FiSidebar } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
 import { SidebarHeader } from '../ui/SidebarHeader';
+import { SettingsDropdown } from '../ui/SettingsDropdown';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -15,6 +17,7 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const { conversations, loadConversation, deleteConversation, clearCurrentConversation } = useChatStore();
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const { showSuccess } = useToast();
 
@@ -175,6 +178,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
                 </div>
               ))
             )}
+          </div>
+
+          <div className="p-4 border-t border-white/10 space-y-2">
+            <SettingsDropdown
+              theme={theme}
+              onToggleTheme={toggleTheme}
+              onLogout={handleLogout}
+            />
           </div>
 
         </div>
