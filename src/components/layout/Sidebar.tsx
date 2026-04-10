@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
-import { useTheme } from '../../contexts/ThemeContext';
 import { FiPlus, FiTrash2, FiMessageSquare, FiSidebar } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
-import { UserMenuDropdown } from '../ui/UserMenuDropdown';
 import { SidebarHeader } from '../ui/SidebarHeader';
 
 interface SidebarProps {
@@ -17,7 +15,6 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const { conversations, loadConversation, deleteConversation, clearCurrentConversation } = useChatStore();
   const { user, logout } = useAuth();
-  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const { showSuccess } = useToast();
 
@@ -180,16 +177,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             )}
           </div>
 
-          {/* User Menu Section - New Version */}
-          <div className="p-4 border-t border-white/10">
-            <UserMenuDropdown
-              theme={theme}
-              onToggleTheme={toggleTheme}
-              onLogout={handleLogout}
-              userEmail={user?.email}
-              userCredits={user?.credits}
-            />
-          </div>
         </div>
       )}
     </>
