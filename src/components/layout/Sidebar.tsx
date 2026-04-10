@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { FiPlus, FiTrash2, FiMessageSquare, FiSun, FiMoon, FiSidebar } from 'react-icons/fi';
+import { FiPlus, FiTrash2, FiMessageSquare, FiSidebar } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
-import { LogOut } from 'lucide-react';
+import { UserMenuDropdown } from '../ui/UserMenuDropdown';
 import { SidebarHeader } from '../ui/SidebarHeader';
 
 interface SidebarProps {
@@ -180,48 +180,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             )}
           </div>
 
-          {/* User Info Section */}
+          {/* User Menu Section - New Version */}
           <div className="p-4 border-t border-white/10">
-            <div className="flex justify-center mb-3">
-              <button
-                onClick={toggleTheme}
-                className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-200 text-sm"
-                title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-              >
-                {theme === 'light' ? (
-                  <>
-                    <FiMoon size={16} />
-                    <span>Dark Mode</span>
-                  </>
-                ) : (
-                  <>
-                    <FiSun size={16} />
-                    <span>Light Mode</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 min-w-0">
-                <div className="w-8 h-8 bg-[rgb(var(--color-primary))] rounded-full flex items-center justify-center flex-shrink-0">
-                  {user?.email?.[0].toUpperCase()}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm truncate">{user?.email}</div>
-                  <div className="text-xs text-gray-400">
-                    {user?.credits || 0} credits
-                  </div>
-                </div>
-              </div>
-              <button
-                onClick={handleLogout}
-                className="p-2 hover:bg-gray-800 rounded-lg transition-colors duration-200 flex-shrink-0"
-                title="Logout"
-              >
-                <LogOut className="w-5 h-5" />
-              </button>
-            </div>
+            <UserMenuDropdown
+              theme={theme}
+              onToggleTheme={toggleTheme}
+              onLogout={handleLogout}
+              userEmail={user?.email}
+              userCredits={user?.credits}
+            />
           </div>
         </div>
       )}
