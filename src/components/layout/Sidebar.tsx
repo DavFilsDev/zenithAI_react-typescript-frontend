@@ -59,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
 
   return (
     <>
-      {/* Collapsed Sidebar - Only logo and toggle button */}
+      {/* Collapsed Sidebar */}
       {!isOpen && (
         <div className="w-16 bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] border-r border-white/10 h-screen flex flex-col">
           <div className="p-4 border-b border-white/10">
@@ -75,7 +75,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             <FiSidebar size={20} className="rotate-180" />
           </button>
 
-          {/* New Chat Button - Collapsed Version */}
           <div className="p-3">
             <button
               onClick={handleNewChat}
@@ -94,10 +93,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               "
               title="New Chat"
             >
-              {/* Shimmer effect */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-[rgb(var(--color-primary))/25] to-transparent" />
               
-              {/* Pulsing dot indicator */}
               <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
               
               <FiPlus 
@@ -112,10 +109,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
       {/* Expanded Sidebar - Full content */}
       {isOpen && (
         <div className="w-64 bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] border-r border-white/10 h-screen flex flex-col">
-          {/* Header with Logo and Toggle */}
           <SidebarHeader isOpen={isOpen} onToggle={onToggle} />
 
-          {/* New Chat Button */}
           <div className="p-4">
             <button
               onClick={handleNewChat}
@@ -187,7 +182,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
 
           {/* User Info Section */}
           <div className="p-4 border-t border-white/10">
-            {/* Theme Toggle Button */}
             <div className="flex justify-center mb-3">
               <button
                 onClick={toggleTheme}
@@ -208,7 +202,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               </button>
             </div>
 
-            {/* User info and logout */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 min-w-0">
                 <div className="w-8 h-8 bg-[rgb(var(--color-primary))] rounded-full flex items-center justify-center flex-shrink-0">
