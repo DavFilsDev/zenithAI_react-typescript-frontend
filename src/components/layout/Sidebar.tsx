@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
@@ -6,8 +6,10 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { FiPlus, FiTrash2, FiMessageSquare, FiSidebar } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
-import { UserMenuDropdown } from '../ui/UserMenuDropdown';
 import { SidebarHeader } from '../ui/SidebarHeader';
+import { SettingsDropdown } from '../ui/SettingsDropdown';
+import { UserButton } from '../ui/UserButton';
+import { UserProfileModal } from '../ui/UserProfileModal';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -20,6 +22,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const { showSuccess } = useToast();
+
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const handleNewChat = () => {
     clearCurrentConversation();
@@ -43,6 +47,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
     const username = user?.username || user?.email || 'User';
     logout();
     showSuccess(`You are logged out successfully! See you soon ${username}!`);
+  };
+
+  const handleUpdateEmail = async (email: string) => {
+    // Implement API call to update email
+    console.log('Update email:', email);
+  };
+
+  const handleUpdateUsername = async (username: string) => {
+    // Implement API call to update username
+    console.log('Update username:', username);
+  };
+
+  const handleUpdatePassword = async (oldPassword: string, newPassword: string) => {
+    // Implement API call to update password
+    console.log('Update password');
   };
 
   useEffect(() => {
@@ -103,6 +122,37 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               />
             </button>
           </div>
+
+         {/* Spacer - pushes everything below to bottom */}
+          <div className="flex-1" />
+          
+          {/* Settings and User - Bottom section */}
+          <div className="p-3 space-y-3">
+            <SettingsDropdown
+              theme={theme}
+              onToggleTheme={toggleTheme}
+              onLogout={handleLogout}
+              variant="icon"
+            />
+            <UserButton
+              variant="icon"
+              onClick={() => setIsProfileModalOpen(true)}
+            />
+          </div>
+
+          <UserProfileModal
+            isOpen={isProfileModalOpen}
+            onClose={() => setIsProfileModalOpen(false)}
+            user={{
+              email: user?.email || '',
+              username: user?.username || '',
+              credits: user?.credits || 0,
+            }}
+            onUpdateEmail={handleUpdateEmail}
+            onUpdateUsername={handleUpdateUsername}
+            onUpdatePassword={handleUpdatePassword}
+          />
+
         </div>
       )}
 
@@ -180,16 +230,33 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             )}
           </div>
 
-          {/* User Menu Section - New Version */}
-          <div className="p-4 border-t border-white/10">
-            <UserMenuDropdown
+          <div className="p-4 border-t border-white/10 space-y-2">
+            <SettingsDropdown
               theme={theme}
               onToggleTheme={toggleTheme}
               onLogout={handleLogout}
-              userEmail={user?.email}
-              userCredits={user?.credits}
+              variant="full"
+            />
+            <UserButton
+              username={user?.username || user?.email?.split('@')[0]}
+              onClick={() => setIsProfileModalOpen(true)}
+              variant="full"
             />
           </div>
+
+          <UserProfileModal
+            isOpen={isProfileModalOpen}
+            onClose={() => setIsProfileModalOpen(false)}
+            user={{
+              email: user?.email || '',
+              username: user?.username || '',
+              credits: user?.credits || 0,
+            }}
+            onUpdateEmail={handleUpdateEmail}
+            onUpdateUsername={handleUpdateUsername}
+            onUpdatePassword={handleUpdatePassword}
+          />
+
         </div>
       )}
     </>
