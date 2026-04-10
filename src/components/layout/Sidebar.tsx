@@ -123,7 +123,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             </button>
           </div>
 
-          <div className="p-3 space-y-3 mb-4">
+         {/* Spacer - pushes everything below to bottom */}
+          <div className="flex-1" />
+          
+          {/* Settings and User - Bottom section */}
+          <div className="p-3 space-y-3">
             <SettingsDropdown
               theme={theme}
               onToggleTheme={toggleTheme}
