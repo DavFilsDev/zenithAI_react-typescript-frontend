@@ -85,7 +85,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
                 backdrop-blur-sm
                 border-2 border-[rgb(var(--color-primary))]
                 text-[rgb(var(--color-primary))]
-                rounded-xl py-4 px-3
+                rounded-xl py-2 px-2
                 hover:shadow-xl hover:shadow-[rgb(var(--color-primary))/30]
                 hover:scale-[1.05] active:scale-[0.95]
                 hover:bg-[rgb(var(--color-primary))/20]
