@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useChatStore } from '../../store/chatStore';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { FiPlus, FiTrash2, FiMessageSquare, FiSidebar, FiSettings, FiUser } from 'react-icons/fi';
+import { FiPlus, FiTrash2, FiMessageSquare, FiSidebar } from 'react-icons/fi';
 import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '../../hooks/useToast';
 import { SidebarHeader } from '../ui/SidebarHeader';
