@@ -136,6 +136,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             />
           </div>
 
+          <UserProfileModal
+            isOpen={isProfileModalOpen}
+            onClose={() => setIsProfileModalOpen(false)}
+            user={{
+              email: user?.email || '',
+              username: user?.username || '',
+              credits: user?.credits || 0,
+            }}
+            onUpdateEmail={handleUpdateEmail}
+            onUpdateUsername={handleUpdateUsername}
+            onUpdatePassword={handleUpdatePassword}
+          />
+
         </div>
       )}
 
