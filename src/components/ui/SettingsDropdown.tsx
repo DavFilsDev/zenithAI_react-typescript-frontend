@@ -5,8 +5,8 @@ interface SettingsDropdownProps {
   theme: 'light' | 'dark';
   onToggleTheme: () => void;
   onLogout: () => void;
-  isOpen?: boolean; 
-  onToggle?: () => void;  
+  isOpen?: boolean;
+  onToggle?: () => void;
   variant?: 'full' | 'icon';
 }
 
@@ -22,7 +22,7 @@ export const SettingsDropdown: React.FC<SettingsDropdownProps> = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
-  
+
   const setIsOpen = (value: boolean) => {
     if (onToggle) {
       onToggle();
@@ -54,13 +54,13 @@ export const SettingsDropdown: React.FC<SettingsDropdownProps> = ({
         </button>
 
         {isOpen && (
-          <div className="absolute bottom-full left-0 right-0 mb-2 bg-[rgb(var(--color-bg))] border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-slide-up">
+          <div className="absolute left-full top-0 ml-2 min-w-[160px] bg-[rgb(var(--color-bg))] border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-slide-right z-50">
             <button
               onClick={() => {
                 onToggleTheme();
                 setIsOpen(false);
               }}
-              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors duration-200"
+              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors duration-200 whitespace-nowrap"
             >
               {theme === 'light' ? (
                 <>
@@ -82,7 +82,7 @@ export const SettingsDropdown: React.FC<SettingsDropdownProps> = ({
                 onLogout();
                 setIsOpen(false);
               }}
-              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-red-500/10 transition-colors duration-200 text-red-500"
+              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-red-500/10 transition-colors duration-200 text-red-500 whitespace-nowrap"
             >
               <FiLogOut size={18} />
               <span className="text-sm">Logout</span>
@@ -105,7 +105,7 @@ export const SettingsDropdown: React.FC<SettingsDropdownProps> = ({
       </button>
 
       {isOpen && (
-        <div className="absolute bottom-full left-0 right-0 mb-2 bg-[rgb(var(--color-bg))] border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-slide-up">
+        <div className="absolute bottom-full left-0 right-0 mb-2 bg-[rgb(var(--color-bg))] border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-slide-up z-50">
           <button
             onClick={() => {
               onToggleTheme();
