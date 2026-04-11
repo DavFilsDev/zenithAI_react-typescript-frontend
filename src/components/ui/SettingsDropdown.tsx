@@ -54,7 +54,7 @@ export const SettingsDropdown: React.FC<SettingsDropdownProps> = ({
         </button>
 
         {isOpen && (
-          <div className="absolute left-full top-0 ml-2 min-w-[160px] bg-[rgb(var(--color-bg))] border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-slide-right z-50">
+          <div className="absolute left-full top-0 ml-5 min-w-[160px] bg-[rgb(var(--color-bg))] border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-slide-right z-50">
             <button
               onClick={() => {
                 onToggleTheme();
