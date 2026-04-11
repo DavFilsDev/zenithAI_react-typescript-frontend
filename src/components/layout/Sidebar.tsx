@@ -127,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           <div className="flex-1" />
           
           {/* Settings and User - Bottom section */}
-          <div className="p-3 space-y-3">
+          <div className="p-3 space-y-3 border-t border-white/10">
             <SettingsDropdown
               theme={theme}
               onToggleTheme={toggleTheme}

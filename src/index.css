@@ -148,3 +148,19 @@ body {
 .animate-scale-up {
   animation: scaleUp 0.2s ease-out;
 }
+
+/* Slide right animation for horizontal dropdown */
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-right {
+  animation: slideRight 0.2s ease-out;
+}

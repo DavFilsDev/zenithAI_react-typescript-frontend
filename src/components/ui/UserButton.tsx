@@ -7,10 +7,10 @@ interface UserButtonProps {
   variant?: 'full' | 'icon';
 }
 
-export const UserButton: React.FC<UserButtonProps> = ({ 
-  username, 
-  onClick, 
-  variant = 'full' 
+export const UserButton: React.FC<UserButtonProps> = ({
+  username,
+  onClick,
+  variant = 'full',
 }) => {
   if (variant === 'icon') {
     return (
