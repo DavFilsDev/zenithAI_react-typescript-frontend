@@ -35,7 +35,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 p-4 border-t bg-white">
+    <form onSubmit={handleSubmit} className="flex gap-2 p-4 border-t bg-white/10 dark:bg-white/5">
       {/* Message input textarea */}
       <textarea
         ref={textareaRef}
@@ -48,6 +48,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
         className="
           flex-1 resize-none rounded-xl p-3
           bg-white/10 dark:bg-white/5
+          text-[rgb(var(--color-text))] 
           border border-white/20 dark:border-white/10
           backdrop-blur-md
           focus:outline-none
