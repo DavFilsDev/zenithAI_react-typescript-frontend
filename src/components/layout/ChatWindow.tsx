@@ -27,8 +27,8 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
         backdrop-blur-md
         border-white/10
       ">
-        <h2 className="font-semibold">
-          ZenithAI Chat
+        <h2 className="font-semibold text-[rgb(var(--color-text))]">
+          Zenith<span className="text-[rgb(var(--color-primary))]">AI</span> Chat
         </h2>
       </div>
 
