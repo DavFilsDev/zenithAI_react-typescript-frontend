@@ -73,7 +73,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
           type="submit"
           disabled={disabled || !message.trim()}
           className="
-            absolute right-2 bottom-2
+            absolute right-1 bottom-1
             p-2 rounded-xl
             bg-[rgb(var(--color-primary))]
             text-white
