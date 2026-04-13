@@ -17,7 +17,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
-  const { conversations, loadConversation, deleteConversation, clearCurrentConversation } = useChatStore();
+  const { conversations, loadConversation, deleteConversation, startNewChat } = useChatStore();
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const handleNewChat = () => {
-    clearCurrentConversation();
+    startNewChat();
     navigate('/chat');
   };
 
