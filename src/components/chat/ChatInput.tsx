@@ -73,6 +73,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
           hover:opacity-90
           transition
           flex items-center justify-center
+          hover:scale-105 active:scale-95
         "
         title="Send message (Enter)"
       >
