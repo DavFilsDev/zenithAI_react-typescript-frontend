@@ -22,7 +22,7 @@ export const MessageList: React.FC<MessageListProps> = ({
   if (messages.length === 0) {
     return (
       <div className="flex-1 flex items-center justify-center p-8">
-        <div className="text-center text-gray-500">
+        <div className="text-center text-[rgb(var(--color-text))] opacity-60">
           <p className="text-lg mb-2">No messages yet</p>
           <p className="text-sm">Start a conversation by sending a message below!</p>
         </div>
