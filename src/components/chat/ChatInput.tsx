@@ -54,11 +54,11 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
           focus:outline-none
           focus:ring-2 focus:ring-[rgb(var(--color-primary))]
           disabled:opacity-50
+          overflow-hidden 
         "
         style={{ 
           minHeight: '44px', 
-          maxHeight: '120px',
-          overflowY: 'auto' 
+          maxHeight: '120px'
         }}
       />
       
