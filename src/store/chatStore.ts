@@ -9,6 +9,7 @@ interface ChatState {
     currentConversation: Conversation | null;
     isLoading: boolean;
     isSending: boolean;
+    isDraft: boolean;
     
     setConversations: (conversations: Conversation[]) => void;
     setCurrentConversation: (conversation: Conversation | null) => void;
@@ -18,6 +19,7 @@ interface ChatState {
     sendMessage: (content: string, conversationId?: string) => Promise<void>;
     deleteConversation: (id: string) => Promise<void>;
     clearCurrentConversation: () => void;
+    startNewChat: () => void;
 }
 
 export const useChatStore = create<ChatState>()(
@@ -27,6 +29,7 @@ export const useChatStore = create<ChatState>()(
             currentConversation: null,
             isLoading: false,
             isSending: false,
+            isDraft: false,
 
             setConversations: (conversations) => set({ conversations }),
         
@@ -44,7 +47,10 @@ export const useChatStore = create<ChatState>()(
                 }
             },
 
-            clearCurrentConversation: () => set({ currentConversation: null }),
+            clearCurrentConversation: () => set({ 
+                currentConversation: null,
+                isDraft: false,
+            }),
 
             loadConversations: async () => {
                 set({ isLoading: true });
@@ -139,6 +145,20 @@ export const useChatStore = create<ChatState>()(
                     console.error('Failed to delete conversation:', error);
                     toast.error('Failed to delete conversation');
                 }
+            },
+
+            startNewChat: () => {
+                set({
+                    currentConversation: {
+                    id: 'draft',
+                    user: 'local',
+                    title: '',
+                    messages: [],
+                    created_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString(),
+                    },
+                    isDraft: true,
+                });
             },
         }),
         {
