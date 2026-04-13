@@ -53,7 +53,7 @@ export const MessageList: React.FC<MessageListProps> = ({
       {/* Loading indicator for older messages */}
       {isLoading && (
         <div className="flex justify-center p-4">
-          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
+          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[rgb(var(--color-primary))]" />
         </div>
       )}
       
