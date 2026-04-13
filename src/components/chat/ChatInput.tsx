@@ -35,50 +35,58 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 p-4 border-t bg-white/10 dark:bg-white/5">
-      {/* Message input textarea */}
-      <textarea
-        ref={textareaRef}
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder={disabled ? "Please wait..." : "Type your message..."}
-        disabled={disabled}
-        rows={1}
-        className="
-          flex-1 resize-none rounded-xl p-3
-          bg-white/10 dark:bg-white/5
-          text-[rgb(var(--color-text))] 
-          border border-white/20 dark:border-white/10
-          backdrop-blur-md
-          focus:outline-none
-          focus:ring-2 focus:ring-[rgb(var(--color-primary))]
-          disabled:opacity-50
-          overflow-hidden 
-        "
-        style={{ 
-          minHeight: '44px', 
-          maxHeight: '120px'
-        }}
-      />
-      
-      {/* Send button */}
-      <button
-        type="submit"
-        disabled={disabled || !message.trim()}
-        className="
-          p-3 rounded-xl
-          bg-[rgb(var(--color-primary))]
-          text-white
-          hover:opacity-90
-          transition
-          flex items-center justify-center
-          hover:scale-105 active:scale-95
-        "
-        title="Send message (Enter)"
-      >
-        <IoSend size={20} />
-      </button>
+    <form onSubmit={handleSubmit} className="p-4 border-t border-white/10">
+      <div className="
+        relative flex items-end
+        rounded-2xl px-3 py-2
+        bg-white/10 dark:bg-white/5
+        backdrop-blur-md
+        border border-white/20 dark:border-white/10
+        focus-within:ring-2 focus-within:ring-[rgb(var(--color-primary))]
+      ">
+        
+        {/* Textarea */}
+        <textarea
+          ref={textareaRef}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder={disabled ? "Please wait..." : "What's on your mind?"}
+          disabled={disabled}
+          rows={1}
+          className="
+            flex-1 resize-none bg-transparent
+            text-[rgb(var(--color-text))]
+            outline-none
+            placeholder:opacity-60
+            pr-10   /* space for button */
+          "
+          style={{
+            minHeight: '24px',
+            maxHeight: '120px',
+            overflow: 'hidden'
+          }}
+        />
+
+        {/* Send Button */}
+        <button
+          type="submit"
+          disabled={disabled || !message.trim()}
+          className="
+            absolute right-2 bottom-2
+            p-2 rounded-xl
+            bg-[rgb(var(--color-primary))]
+            text-white
+            hover:opacity-90
+            transition
+            disabled:opacity-50
+            flex items-center justify-center
+          "
+        >
+          <IoSend size={18} />
+        </button>
+
+      </div>
     </form>
   );
 };
