@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { ThemeToggle } from '../components/ui/ThemeToggle';
 import { Typewriter } from '../components/ui/Typewriter';
 import { GlassButton } from '../components/ui/GlassButton';
+import { AnimatedBackground } from '../components/ui/AnimatedBackground';
 
 export const Home = () => {
   const { user } = useAuth();
@@ -39,9 +40,12 @@ export const Home = () => {
         </div>
       </header>
 
-      <main className="flex-1 flex items-center justify-center px-6">
-        <div className="text-center max-w-2xl">
+      <main className="relative flex-1 flex items-center justify-center px-6 overflow-hidden">
+        <AnimatedBackground />
+
+        <div className="relative z-10 text-center max-w-2xl">
           <Typewriter text="ZenithAI — your AI assistant for debugging code like a pro!" speed={80} />
+          
           <p className="mt-4 text-sm md:text-lg opacity-80">
             Get real-time coding guidance and best practices for all languages.
           </p>
@@ -51,8 +55,8 @@ export const Home = () => {
               Get Started
             </GlassButton>
           </div>
-
         </div>
+
       </main>
 
       <footer className="w-full py-2 mt-auto
