@@ -25,13 +25,13 @@ export const AnimatedBackground = () => {
         src={bg}
         alt="background"
         className="
-          w-[1200px] md:w-[1600px]
-          opacity-10
-          transition-transform duration-300 ease-out
-          select-none
+            w-[1200px] md:w-[1600px]
+            opacity-[0.03]
+            transition-transform duration-700 ease-out
+            select-none
         "
         style={{
-          transform: `translate(${position.x}px, ${position.y}px) rotate(${position.x * 0.2}deg)`
+            transform: `translate(${position.x}px, ${position.y}px) rotate(${position.x * 0.15}deg)`
         }}
       />
     </div>
