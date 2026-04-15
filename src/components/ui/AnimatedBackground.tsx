@@ -26,7 +26,7 @@ export const AnimatedBackground = () => {
         alt="background"
         className="
             w-[1200px] md:w-[1600px]
-            opacity-[0.03]
+            opacity-[0.08]
             transition-transform duration-700 ease-out
             select-none
         "
