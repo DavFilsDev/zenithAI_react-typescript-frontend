@@ -20,32 +20,39 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
 }) => {
   return (
     <div className="flex-1 flex flex-col h-full bg-[rgb(var(--color-bg))]">
-      {/* Header */}
+      
       <div className="
         p-4 border-b
         bg-white/10 dark:bg-white/5
         backdrop-blur-md
         border-white/10
       ">
-        <h2 className="font-semibold text-[rgb(var(--color-text))]">
-          Zenith<span className="text-[rgb(var(--color-primary))]">AI</span> Chat
-        </h2>
+        <div className="max-w-3xl mx-auto w-full">
+          <h2 className="font-semibold text-[rgb(var(--color-text))]">
+            Zenith<span className="text-[rgb(var(--color-primary))]">AI</span> Chat
+          </h2>
+        </div>
       </div>
 
-      {/* Message list - takes all available space */}
       <div className="flex-1 overflow-hidden">
-        <MessageList 
-          messages={messages} 
-          isLoading={isLoading}
-          isSending={isSending}
-        />
+        <div className="max-w-3xl mx-auto w-full h-full px-4">
+          <MessageList 
+            messages={messages} 
+            isLoading={isLoading}
+            isSending={isSending}
+          />
+        </div>
       </div>
 
-      {/* Input area - fixed at bottom */}
-      <ChatInput 
-        onSendMessage={onSendMessage} 
-        disabled={disabled || isSending}
-      />
+      <div className="w-full">
+        <div className="max-w-3xl mx-auto w-full px-4">
+          <ChatInput 
+            onSendMessage={onSendMessage} 
+            disabled={disabled || isSending}
+          />
+        </div>
+      </div>
+
     </div>
   );
 };
