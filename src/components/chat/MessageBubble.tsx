@@ -48,7 +48,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         {isUser && (
           <div className="
             flex gap-2 mt-2 justify-end
-            opacity-0 group-hover:opacity-100
+            opacity-50 group-hover:opacity-100
             transition
           ">
             
