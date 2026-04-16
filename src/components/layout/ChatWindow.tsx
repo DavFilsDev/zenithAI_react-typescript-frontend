@@ -35,7 +35,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       </div>
 
       <div className="flex-1 overflow-hidden">
-        <div className="max-w-3xl mx-auto w-full h-full px-4">
+        <div className="max-w-4xl mx-auto w-full h-full px-4">
           <MessageList 
             messages={messages} 
             isLoading={isLoading}
@@ -45,7 +45,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       </div>
 
       <div className="w-full">
-        <div className="max-w-3xl mx-auto w-full px-4">
+        <div className="max-w-4xl mx-auto w-full px-4">
           <ChatInput 
             onSendMessage={onSendMessage} 
             disabled={disabled || isSending}
