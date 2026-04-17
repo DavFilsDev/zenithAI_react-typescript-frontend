@@ -19,8 +19,6 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       
       {/* GROUP for hover */}
       <div className="group max-w-[70%]">
-        
-        {/* Message bubble */}
         <div
           className={`rounded-xl p-4 ${
             isUser
@@ -52,7 +50,6 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             transition
           ">
             
-            {/* Copy */}
             <button
               onClick={handleCopy}
               className="
@@ -65,8 +62,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             >
               <Copy size={16} />
             </button>
-
-            {/* Edit */}
+            
             <button
               className="
                 p-1.5 rounded-lg
