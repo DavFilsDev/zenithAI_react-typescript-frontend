@@ -22,14 +22,14 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
     <div className="flex-1 flex flex-col h-full bg-[rgb(var(--color-bg))]">
       
       <div className="
-        p-4 border-b
+        py-4 px-4 border-b
         bg-white/10 dark:bg-white/5
         backdrop-blur-md
         border-white/10
       ">
         <div className="max-w-3xl mx-auto w-full">
           <h2 className="font-semibold text-[rgb(var(--color-text))]">
-            Zenith<span className="text-[rgb(var(--color-primary))]">AI</span> Chat
+            Untitle chat
           </h2>
         </div>
       </div>
