@@ -69,29 +69,28 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled })
         />
 
         {/* Send Button */}
-   <button
-      type="submit"
-      disabled={disabled || !message.trim()}
-      className="
-        absolute right-1 bottom-1
-        p-2 rounded-xl
+        <button
+          type="submit"
+          disabled={disabled || !message.trim()}
+          className="
+            absolute right-1 bottom-1
+            p-2 rounded-xl
 
-        bg-white/10 dark:bg-white/5
-        backdrop-blur-md
-        border border-white/20 dark:border-white/10
+            bg-white/10 dark:bg-white/5
+            backdrop-blur-md
+            border border-white/20 dark:border-white/10
 
-        text-[rgb(var(--color-primary))]
+            text-[rgb(var(--color-primary))]
 
-        hover:bg-white/20 dark:hover:bg-white/10
-        transition-all duration-200
+            hover:bg-white/20 dark:hover:bg-white/10
+            transition-all duration-200
 
-        disabled:opacity-40
-        flex items-center justify-center
-      "
-    >
-      <IoSend size={18} />
-    </button>
-
+            disabled:opacity-40
+            flex items-center justify-center
+          "
+        >
+          <IoSend size={18} />
+        </button>
       </div>
     </form>
   );
