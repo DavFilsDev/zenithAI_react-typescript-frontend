@@ -10,7 +10,7 @@ export const Home = () => {
 
   return (
     <div className="h-screen w-full overflow-hidden bg-background text-foreground flex flex-col">
-      <header className="flex items-center justify-between px-6 py-4 border-b border-white/10 backdrop-blur-md">
+      <header className="flex items-center justify-between px-6 py-4 border-b border-border backdrop-blur-md">
         <h1 className="text-xl font-bold tracking-wide">
           Zenith<span className="text-[rgb(var(--color-primary))]">AI</span>
         </h1>
