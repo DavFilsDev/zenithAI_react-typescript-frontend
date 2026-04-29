@@ -45,9 +45,9 @@ export const Input: React.FC<InputProps> = ({
             className="absolute right-3 top-1/2 -translate-y-1/2 opacity-60 hover:opacity-100 transition"
           >
             {showPassword ? (
-              <EyeOff className="text-[rgb(var(--color-primary))]" size={18} />
+              <EyeOff className="text-primary" size={18} />
             ) : (
-              <Eye className="text-[rgb(var(--color-primary))]" size={18} />
+              <Eye className="text-primary" size={18} />
             )}
           </button>
         )}
