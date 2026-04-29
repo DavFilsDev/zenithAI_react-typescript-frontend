@@ -1,31 +1,23 @@
 @import "tailwindcss";
 
-/* =========================
-   DESIGN TOKENS (LIGHT)
-========================= */
+/* DESIGN TOKENS */
 :root {
-  /* Core surfaces */
   --background: 255 255 255;
   --foreground: 15 23 42;
 
-  /* Primary system */
   --primary: 37 99 235;
   --primary-light: 96 165 250;
   --primary-dark: 29 78 216;
 
-  /* Semantic states */
   --success: 34 197 94;
   --destructive: 239 68 68;
   --warning: 234 179 8;
 
-  /* Effects */
   --card: 255 255 255;
   --border: 226 232 240;
 }
 
-/* =========================
-   DARK MODE TOKENS
-========================= */
+/* DARK MODE TOKENS */
 .dark {
   --background: 2 6 23;
   --foreground: 248 250 252;
@@ -42,20 +34,13 @@
   --border: 51 65 85;
 }
 
-/* =========================
-   BASE STYLES
-========================= */
+/* BASE STYLES */
 body {
   background-color: rgb(var(--background));
   color: rgb(var(--foreground));
 }
 
-/* =========================
-   REMOVE BAD PATTERNS
-   (NO MORE @apply TOKENS)
-========================= */
-
-/* IMPORTANT:
+/* REMOVE BAD PATTERNS
    We intentionally REMOVE:
    .btn-primary
    .glass
@@ -63,9 +48,7 @@ body {
    -> These should be React components instead
 */
 
-/* =========================
-   TOAST ANIMATIONS
-========================= */
+/* TOAST ANIMATIONS */
 @keyframes toast-slide-in {
   from {
     transform: translateX(100%);
@@ -109,9 +92,7 @@ body {
   }
 }
 
-/* =========================
-   SIDEBAR
-========================= */
+/* SIDEBAR */
 .sidebar-transition {
   transition: width 0.3s ease-in-out;
 }
@@ -120,9 +101,7 @@ body {
   width: 64px;
 }
 
-/* =========================
-   ANIMATIONS (DEDUPED FIX)
-========================= */
+/* ANIMATIONS */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
