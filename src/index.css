@@ -1,51 +1,71 @@
 @import "tailwindcss";
 
 /* =========================
-   DESIGN TOKENS (THEME)
+   DESIGN TOKENS (LIGHT)
 ========================= */
-
 :root {
-  /* Primary */
-  --color-primary: 37 99 235;
-  --color-primary-light: 96 165 250;
-  --color-primary-dark: 29 78 216;
+  /* Core surfaces */
+  --background: 255 255 255;
+  --foreground: 15 23 42;
 
-  /* Semantic */
-  --color-success: 34 197 94;
-  --color-error: 239 68 68;
-  --color-warning: 234 179 8;
+  /* Primary system */
+  --primary: 37 99 235;
+  --primary-light: 96 165 250;
+  --primary-dark: 29 78 216;
 
-  /* Base */
-  --color-background: 255 255 255;
-  --color-foreground: 15 23 42;
+  /* Semantic states */
+  --success: 34 197 94;
+  --destructive: 239 68 68;
+  --warning: 234 179 8;
+
+  /* Effects */
+  --card: 255 255 255;
+  --border: 226 232 240;
 }
 
+/* =========================
+   DARK MODE TOKENS
+========================= */
 .dark {
-  --color-primary: 59 130 246;
-  --color-primary-light: 147 197 253;
-  --color-primary-dark: 37 99 235;
+  --background: 2 6 23;
+  --foreground: 248 250 252;
 
-  --color-success: 74 222 128;
-  --color-error: 248 113 113;
-  --color-warning: 250 204 21;
+  --primary: 59 130 246;
+  --primary-light: 147 197 253;
+  --primary-dark: 37 99 235;
 
-  --color-background: 2 6 23;
-  --color-foreground: 248 250 252;
+  --success: 74 222 128;
+  --destructive: 248 113 113;
+  --warning: 250 204 21;
+
+  --card: 15 23 42;
+  --border: 51 65 85;
 }
 
 /* =========================
    BASE STYLES
 ========================= */
-
 body {
-  background-color: rgb(var(--color-background));
-  color: rgb(var(--color-foreground));
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
 }
 
 /* =========================
-   ANIMATIONS (GLOBAL ONLY)
+   REMOVE BAD PATTERNS
+   (NO MORE @apply TOKENS)
 ========================= */
 
+/* IMPORTANT:
+   We intentionally REMOVE:
+   .btn-primary
+   .glass
+   .gradient-primary
+   -> These should be React components instead
+*/
+
+/* =========================
+   TOAST ANIMATIONS
+========================= */
 @keyframes toast-slide-in {
   from {
     transform: translateX(100%);
@@ -67,57 +87,6 @@ body {
     opacity: 0;
   }
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scaleUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* =========================
-   UTILITY ANIMATION CLASSES
-========================= */
-
-.animate-fade-in {
-  animation: fadeIn 0.2s ease-out;
-}
-
-.animate-scale-up {
-  animation: scaleUp 0.2s ease-out;
-}
-
-.animate-slide-right {
-  animation: slideRight 0.2s ease-out;
-}
-
-/* =========================
-   TOAST SYSTEM
-========================= */
 
 .go-toast {
   animation: toast-slide-in 0.2s ease-out !important;
@@ -143,7 +112,6 @@ body {
 /* =========================
    SIDEBAR
 ========================= */
-
 .sidebar-transition {
   transition: width 0.3s ease-in-out;
 }
@@ -153,9 +121,43 @@ body {
 }
 
 /* =========================
-   CONTENT ANIMATION
+   ANIMATIONS (DEDUPED FIX)
 ========================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-.sidebar-content {
-  animation: fadeIn 0.2s ease-in-out;
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.2s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.2s ease-out;
 }
