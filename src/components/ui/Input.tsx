@@ -21,7 +21,7 @@ export const Input: React.FC<InputProps> = ({
 
   return (
     <div className="space-y-1 relative">
-      <label className="text-sm font-medium opacity-80">{label}</label>
+      <label className="text-sm font-medium text-foreground/70">{label}</label>
       <div className="relative">
         <input
           type={isPassword && showPassword ? 'text' : type}
