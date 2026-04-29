@@ -27,16 +27,16 @@ export const Input: React.FC<InputProps> = ({
           type={isPassword && showPassword ? 'text' : type}
           {...registration}
           {...props}
-          className={`
-            w-full px-4 py-2 rounded-xl
-            bg-white/10 dark:bg-white/5
-            backdrop-blur-md
-            border border-white/20 dark:border-white/10
-            focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-primary))]
-            pr-10
-            transition-all
-            ${className}
-          `}
+         className={`
+          w-full px-4 py-2 rounded-xl
+          bg-card/10
+          backdrop-blur-md
+          border border-border
+          focus:outline-none focus:ring-2 focus:ring-primary
+          pr-10
+          transition-all
+          ${className}
+        `}
         />
         {isPassword && (
           <button
