@@ -59,15 +59,7 @@ export const Home = () => {
 
       </main>
 
-      <footer className="w-full py-2 mt-auto
-                        bg-white/10 dark:bg-white/5
-                        backdrop-blur-md
-                        border-t border-white/20 dark:border-white/10
-                        text-sm text-[rgb(var(--color-text))] 
-                        flex flex-col md:flex-row items-center justify-center gap-4
-                        transition-colors
-                        shadow-inner shadow-white/5">
-        
+      <footer className="w-full py-2 mt-auto bg-card/10 backdrop-blur-md border-t border-border text-sm text-foreground flex flex-col md:flex-row items-center justify-center gap-4 transition-colors shadow-inner shadow-white/5">
         <p>© 2026 ZenithAI</p>
 
         <div className="flex gap-4">
