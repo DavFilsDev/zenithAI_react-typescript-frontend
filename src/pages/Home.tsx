@@ -9,10 +9,10 @@ export const Home = () => {
   const { user } = useAuth();
 
   return (
-    <div className="h-screen w-full overflow-hidden bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] flex flex-col">
-      <header className="flex items-center justify-between px-6 py-4 border-b border-white/10 backdrop-blur-md">
+    <div className="h-screen w-full overflow-hidden bg-background text-foreground flex flex-col">
+      <header className="flex items-center justify-between px-6 py-4 border-b border-border backdrop-blur-md">
         <h1 className="text-xl font-bold tracking-wide">
-          Zenith<span className="text-[rgb(var(--color-primary))]">AI</span>
+          Zenith<span className="text-primary">AI</span>
         </h1>
 
         <div className="flex items-center gap-4">
@@ -32,7 +32,7 @@ export const Home = () => {
           {user && (
             <Link
               to="/chat"
-              className="px-4 py-2 rounded-lg bg-[rgb(var(--color-primary))] text-white hover:opacity-90 transition"
+              className="px-4 py-2 rounded-lg bg-primary text-white hover:opacity-90 transition"
             >
               Chat
             </Link>
@@ -59,22 +59,15 @@ export const Home = () => {
 
       </main>
 
-      <footer className="w-full py-2 mt-auto
-                        bg-white/10 dark:bg-white/5
-                        backdrop-blur-md
-                        border-t border-white/20 dark:border-white/10
-                        text-sm text-[rgb(var(--color-text))] 
-                        flex flex-col md:flex-row items-center justify-center gap-4
-                        transition-colors
-                        shadow-inner shadow-white/5">
-        
+      <footer className="w-full py-2 mt-auto bg-card/10 backdrop-blur-md border-t border-border text-sm text-foreground flex flex-col md:flex-row items-center justify-center gap-4 transition-colors shadow-inner shadow-white/5">
         <p>© 2026 ZenithAI</p>
 
         <div className="flex gap-4">
-          <a href="/privacy" className="hover:underline opacity-80 hover:text-[rgb(var(--color-primary))] transition">
-            Terms 
+          <a href="/privacy" className="hover:underline opacity-80 hover:text-primary transition">
+            Terms
           </a>
-          <a href="/terms" className="hover:underline opacity-80 hover:text-[rgb(var(--color-primary))] transition">
+
+          <a href="/terms" className="hover:underline opacity-80 hover:text-primary transition">
             Privacy
           </a>
         </div>
