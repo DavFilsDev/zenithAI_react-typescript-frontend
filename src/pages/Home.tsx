@@ -12,7 +12,7 @@ export const Home = () => {
     <div className="h-screen w-full overflow-hidden bg-background text-foreground flex flex-col">
       <header className="flex items-center justify-between px-6 py-4 border-b border-border backdrop-blur-md">
         <h1 className="text-xl font-bold tracking-wide">
-          Zenith<span className="text-[rgb(var(--color-primary))]">AI</span>
+          Zenith<span className="text-primary">AI</span>
         </h1>
 
         <div className="flex items-center gap-4">
@@ -32,7 +32,7 @@ export const Home = () => {
           {user && (
             <Link
               to="/chat"
-              className="px-4 py-2 rounded-lg bg-[rgb(var(--color-primary))] text-white hover:opacity-90 transition"
+              className="px-4 py-2 rounded-lg bg-primary text-white hover:opacity-90 transition"
             >
               Chat
             </Link>
