@@ -21,22 +21,22 @@ export const Input: React.FC<InputProps> = ({
 
   return (
     <div className="space-y-1 relative">
-      <label className="text-sm font-medium opacity-80">{label}</label>
+      <label className="text-sm font-medium text-foreground/70">{label}</label>
       <div className="relative">
         <input
           type={isPassword && showPassword ? 'text' : type}
           {...registration}
           {...props}
-          className={`
-            w-full px-4 py-2 rounded-xl
-            bg-white/10 dark:bg-white/5
-            backdrop-blur-md
-            border border-white/20 dark:border-white/10
-            focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-primary))]
-            pr-10
-            transition-all
-            ${className}
-          `}
+         className={`
+          w-full px-4 py-2 rounded-xl
+          bg-card/10
+          backdrop-blur-md
+          border border-border
+          focus:outline-none focus:ring-2 focus:ring-primary
+          pr-10
+          transition-all
+          ${className}
+        `}
         />
         {isPassword && (
           <button
@@ -45,14 +45,14 @@ export const Input: React.FC<InputProps> = ({
             className="absolute right-3 top-1/2 -translate-y-1/2 opacity-60 hover:opacity-100 transition"
           >
             {showPassword ? (
-              <EyeOff className="text-[rgb(var(--color-primary))]" size={18} />
+              <EyeOff className="text-primary" size={18} />
             ) : (
-              <Eye className="text-[rgb(var(--color-primary))]" size={18} />
+              <Eye className="text-primary" size={18} />
             )}
           </button>
         )}
       </div>
-      {error && <p className="text-red-400 text-sm">{error}</p>}
+      {error && <p className="text-destructive text-sm">{error}</p>}
     </div>
   );
 };
