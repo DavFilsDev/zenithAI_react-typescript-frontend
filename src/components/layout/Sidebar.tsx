@@ -22,6 +22,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const { showSuccess } = useToast();
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
@@ -86,12 +87,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               Z<span className="text-[rgb(var(--color-primary))]">A</span>
             </h1>
           </div>
-          <button
-            onClick={onToggle}
-            className="p-2 mx-auto mt-2 rounded-lg hover:bg-white/10 transition-all duration-200"
-          >
-            <FiSidebar size={20} className="rotate-180" />
-          </button>
+          <div className='relative mx-auto'>
+            <button
+              onClick={onToggle}
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+              className="p-2 mx-auto mt-2 rounded-lg hover:bg-white/10 transition-all duration-200"
+            >
+              <FiSidebar size={20} className="rotate-180" />
+            </button>
+            {showTooltip && (
+              <div className="absolute left-full top-[60%] -translate-y-1/2 ml-2 px-2 py-1 text-xs bg-gray-900 text-white border border-white/20 rounded whitespace-nowrap">
+                {isOpen ? 'Collapse sidebar (Ctrl+B)' : 'Expand sidebar (Ctrl+B)'}
+              </div>
+            )}
+          </div>
 
           <div className="p-3">
             <button
