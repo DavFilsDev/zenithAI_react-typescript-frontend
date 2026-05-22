@@ -89,7 +89,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           <button
             onClick={onToggle}
             className="p-2 mx-auto mt-2 rounded-lg hover:bg-white/10 transition-all duration-200"
-            title="Expand sidebar"
           >
             <FiSidebar size={20} className="rotate-180" />
           </button>
