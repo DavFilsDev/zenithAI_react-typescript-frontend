@@ -21,7 +21,6 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isOpen, onToggle }
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
           className="p-2 rounded-lg hover:bg-white/10 transition-all duration-200"
-          title={isOpen ? 'Collapse sidebar' : 'Expand sidebar'}
         >
           <FiSidebar 
             size={20} 
