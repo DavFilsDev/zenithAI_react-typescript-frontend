@@ -76,7 +76,6 @@ export const Login = () => {
         {/* Login form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           
-          {/* Email field */}
           <Input
             label="Email"
             type="email"
@@ -91,7 +90,6 @@ export const Login = () => {
             error={errors.email?.message}
           />
           
-          {/* Password field */}
           <Input
             label="Password"
             type="password"
@@ -100,12 +98,10 @@ export const Login = () => {
             error={errors.password?.message}
           />
           
-          {/* Submit button */}
           <Button type="submit" loading={loading}>
             Sign In
           </Button>
           
-          {/* Link to register page */}
           <p className="text-center text-sm opacity-70">
             Don’t have an account?{" "}
             <Link
