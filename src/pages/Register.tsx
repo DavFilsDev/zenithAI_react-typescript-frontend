@@ -61,8 +61,6 @@ export const Register = () => {
 
         {/* Form placeholder */}
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
-          {/* First Name (optional) */}
-
           <Input
             label="Email"
             type="email"
