@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 interface GlassButtonProps {
   children: ReactNode;
   onClick?: () => void;
-  to?: string; // optional link
+  to?: string;
   className?: string;
 }
 
