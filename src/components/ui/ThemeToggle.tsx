@@ -18,7 +18,6 @@ export const ThemeToggle = () => {
         transition-all duration-300
       "
     >
-      {/* Sliding background (FIXED direction) */}
       <div
         className={`
           absolute top-1 left-1 w-7 h-7 rounded-full
@@ -31,7 +30,6 @@ export const ThemeToggle = () => {
         `}
       />
 
-      {/* Moon (LEFT) */}
       <div className="z-10 w-7 h-7 flex items-center justify-center">
         <Moon
           size={16}
@@ -41,7 +39,6 @@ export const ThemeToggle = () => {
         />
       </div>
 
-      {/* Sun (RIGHT) */}
       <div className="z-10 w-7 h-7 flex items-center justify-center">
         <Sun
           size={16}
