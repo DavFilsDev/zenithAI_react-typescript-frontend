@@ -25,8 +25,8 @@ export const ThemeToggle = () => {
           shadow-md
           transition-all duration-300 ease-in-out
           ${isDark 
-            ? 'translate-x-0 bg-[rgb(var(--color-primary))]'   // 🌙 LEFT
-            : 'translate-x-7 bg-yellow-400'}                  // ☀️ RIGHT
+            ? 'translate-x-0 bg-[rgb(var(--color-primary))]'
+            : 'translate-x-7 bg-yellow-400'}
         `}
       />
 
