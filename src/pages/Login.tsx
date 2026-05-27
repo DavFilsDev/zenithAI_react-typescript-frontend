@@ -70,10 +70,8 @@ export const Login = () => {
                 rounded-2xl
                 shadow-xl">
         
-        {/* Header */}
         <CardHeader phrase="Welcome back to your smart coding companion!" />
 
-        {/* Login form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           
           <Input
