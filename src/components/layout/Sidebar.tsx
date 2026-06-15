@@ -61,7 +61,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   };
 
   const handleUpdatePassword = async (oldPassword: string, newPassword: string) => {
-    // Implement API call to update password
+    // Implement API call to update password with proper error handling and success feedback
     console.log('Update password');
   };
 
